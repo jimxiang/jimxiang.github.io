@@ -81,21 +81,46 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/04/18/my-new-post/" title="first time to write blog" itemprop="url">first time to write blog</a>
+      <a href="/2015/04/18/my-first-post/" title="my first post" itemprop="url">my first post</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="JiXiang" target="_blank" itemprop="author">JiXiang</a>
 		
   <p class="article-time">
-    <time datetime="2015-04-18T07:05:18.000Z" itemprop="datePublished"> 发表于 2015-04-18</time>
+    <time datetime="2015-04-18T10:25:01.000Z" itemprop="datePublished"> 发表于 2015-04-18</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <p>Today is very significant.Because i’ve learnt using Hexo to build a blog and using MarkDown ,a kind of sheet language ,to wirte article with great convenient.Also ,i find a very useful tool ,MaDe ,a extension in Chrome Browser ,to edit text.In a word ,i feel very proud of myself.</p>
-
+        <h2 id="���������ˣ����˲������ơ�">���������ˣ����˲������ơ�</h2><p>1.ѧ����ʹ��Hexo�һ����̬����<br>2.ѧ����ʹ��MarkDown���ּ򵥵ı������Ա�д����   </p>
+<p>ǰ���쿴��ѧ������MarkDownд���ͣ��о��Ƹ��ܸߣ�����Ա����ʮ�㡣�������������ˣ��ְ�һЩ��Ҫ������¼һ��   </p>
+<p>1.����Ҫ��һ��<a href="https://github.com" target="_blank" rel="external">github</a>�˺ţ�Ȼ������һ��repository(�ֿ�)���ؼ������� <strong>�ֿ�����Ҫ�������˺�������ͬ�����ں�������github.io</strong><br>����: �ҵ�github���� <strong>jimxiang</strong>,��ô�ͽ�һ����Ϊ <strong>jimxiang.github.io</strong>�Ĳֿ⡣������Ҫ����SSH,���Ͻ̳̺ܶ࣬���ﲻ��׸����<br>2.ʹ��node.js����npm�������������н������Ĳ���   </p>
+<h2 id="��װHexo">��װHexo</h2><p><pre><code> $ npm install -g hexo // -g  ��ʾ��hexo��װ��ȫ�֣������ڵ�ǰ�ļ��У��Ժ��ؽ���Ŀʱ�����ٴΰ�װ</code>   </pre></p>
+<h2 id="����Hexo">����Hexo</h2><p><pre><code> $ hexo init </code><br>�����Ѿ���ñ��ص�hexo�����ˣ�ִ����������   </pre></p>
+<p><pre><code> $ hexo g   // ���ɾ�̬ҳ����publicĿ¼</code></pre></p>
+<p><pre><code> $ hexo s   // ����Ԥ�����ʶ˿ڣ�Ĭ�϶˿�4000��’ctrl + c’�ر�server��</code>   </pre></p>
+<h2 id="������������_localhost:4000_����">������������ <strong>localhost:4000</strong> ����</h2><h2 id="������������">������������</h2><p>github��������<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">��������</a>������cloneһ������ϲ��������   </p>
+<p><pre><code> $ git clone <a href="https://github.com/...(������ַ" target="_blank" rel="external">https://github.com/...(������ַ</a>)</code></pre></p>
+<h2 id="����">����</h2><p><pre><code> $ git clone <a href="https://github.com/wuchong/jacman.git" target="_blank" rel="external">https://github.com/wuchong/jacman.git</a> themes/jacman</code>   </pre></p>
+<h2 id="��������">��������</h2><p>�޸�HexoĿ¼�µ�config.yml�����ļ��е�theme���ԣ���������Ϊjacman��   </p>
+<p><pre><code> theme: jacman</code>   </pre></p>
+<h3 id="ע�⣺Hexo������config-yml�ļ���һ���ڸ�Ŀ¼��һ����theme�£���ʱ�޸ĵ����ڸ�Ŀ¼�µġ�">ע�⣺Hexo������config.yml�ļ���һ���ڸ�Ŀ¼��һ����theme�£���ʱ�޸ĵ����ڸ�Ŀ¼�µġ�</h3><h2 id="��������-1">��������</h2><p><pre><code> $ cd themes/jacman</code>   </pre></p>
+<p><pre><code> $ git pull</code>   </pre></p>
+<h2 id="ʹ��������">ʹ��������</h2><p>�𶯱��ط�����ʵʱ�鿴����blog   </p>
+<p><pre><code> $ hexo serve</code>   </pre></p>
+<h2 id="������Ҫ��һ�����ѱ��صĲ��Ͳ�����github�ϣ���ľ�кܼ�����">������Ҫ��һ�����ѱ��صĲ��Ͳ�����github�ϣ���ľ�кܼ�����</h2><p>���� <strong>��Ŀ¼�µ�config.yml</strong> �ļ�   </p>
+<p><pre><code> deploy:</code>   </pre></p>
+<p><pre><code> type: git</code>   </pre></p>
+<p><pre><code> repository: git@github.com/…(���Լ���github��ַ)</code></pre></p>
+<p><pre><code> branch: master</code>   </pre></p>
+<h3 id="npm����">npm����</h3><p><pre><code> $ hexo clean</code>   </pre></p>
+<p><pre><code> $ hexo generate</code>   </pre></p>
+<p><pre><code> $ hexo deploy  //��һ����������������github�û���������</code>   </pre></p>
+<h2 id="����Ϊֹ�������Ե�½_xxx-github-io_�鿴���Ĳ�����!">����Ϊֹ�������Ե�½ <strong>xxx.github.io</strong> �鿴���Ĳ�����!</h2><h2 id="Hexo�޸�blog��ҳ���ݣ��޸ĸ�Ŀ¼�µ�_config-yml_�ļ�">Hexo�޸�blog��ҳ���ݣ��޸ĸ�Ŀ¼�µ� <strong>config.yml</strong> �ļ�</h2><h2 id="�½�����_$_hexo_new_“����������”_//�½�һ��xxx-md���ļ�">�½����� $ hexo new “����������” //�½�һ��xxx.md���ļ�</h2><h2 id="ʹ�ü��±���sublime_text��chrome�����ȱ༭source/_posts�ļ��µ�-md�ļ�������MakeDown����д����������">ʹ�ü��±���sublime text��chrome�����ȱ༭source/_posts�ļ��µ�.md�ļ�������MakeDown����д����������</h2><h2 id="д���������͵���������">д���������͵���������</h2><p><pre><code> $ hexo g</code>   </pre></p>
+<p><pre><code> $ hexo d</code>   </pre></p>
+<h2 id="����������������Hexo��github������̬���ͣ��ǲ��Ǻ���Ȥ�أ��Ͻ����ְɣ�">����������������Hexo��github������̬���ͣ��ǲ��Ǻ���Ȥ�أ��Ͻ����ְɣ�</h2>
         
         
         <p class="article-more-link">

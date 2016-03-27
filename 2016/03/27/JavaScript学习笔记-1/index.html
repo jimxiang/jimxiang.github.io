@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>信息系统管理与安全课堂笔记 | Ji Xiang&#39;s blog</title>
+  <title>JavaScript学习笔记(1) | Ji Xiang&#39;s blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -101,6 +101,19 @@
             <!-- Dropdown Menu -->
 			 
             
+            
+            <li>
+                <a class="sb-toggle-submenu">Tags<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li>
+                    <a href="/tags/JavaScript/" class="animsition-link">
+                        JavaScript<small>(1)</small>
+                    </a>
+                    </li>
+                    
+                </ul>
+            </li>
             
             
             <li>
@@ -214,60 +227,138 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2016-03-14T09:05:00.000Z" itemprop="datePublished">
-          2016-03-14
+      <time datetime="2016-03-27T06:30:51.000Z" itemprop="datePublished">
+          2016-03-27
       </time>
     
+    
+    | 
+    <a href='/tags/JavaScript/'>JavaScript</a>
+    
+    
 </span>
-                <h1>信息系统管理与安全课堂笔记</h1>
+                <h1>JavaScript学习笔记(1)</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="信息系统管理与安全_note1">信息系统管理与安全 note1</h2><h3 id="软件可信性问题：">软件可信性问题：</h3><ol>
-<li>空间技术</li>
-<li>医疗系统<br>原因：总体安全设计有缺陷<pre><code>软件编码错误
-</code></pre>   取消了硬件安全联锁<br>   安全分析只考虑了硬件<br>   操作人员的差错<br>   对仪器的安全校验粗心大意   </li>
-</ol>
-<h3 id="传统的定义：失效、故障">传统的定义：失效、故障</h3><ol>
-<li>失效：电路（或系统）发生了违背设计规定功能的情况，便认为该电路（或系统）失效。   </li>
-<li>故障：有可能引起失效的一种物理缺陷（软件的缺陷也成为bug）   </li>
-</ol>
-<h3 id="失效分析、失效模式和实效机理">失效分析、失效模式和实效机理</h3><ol>
-<li>失效分析：分析失效的发生和影响，确定失效模式，研究失效机理，尽可能提供改进的措施。</li>
-<li>失效模式：系统失效的表现形式</li>
-<li>失效机理：导致系统失效的内在原因   </li>
-</ol>
-<h3 id="系统级软件异常（失效）的分类">系统级软件异常（失效）的分类</h3><ol>
-<li>操作系统挂起</li>
-<li>程序挂起</li>
-<li>程序失败</li>
-<li>输入问题</li>
-<li>未达到要求的性能</li>
-<li>发现的整个产品失败</li>
-<li>系统错误信息</li>
-<li>输出问题</li>
-<li>其他</li>
-</ol>
-<h3 id="差错/错误">差错/错误</h3><p> . 系统处在如下情况下时会发生失效</p>
+      		<h2 id="JavaScript中的apply(),_call()和arguments对象">JavaScript中的apply(), call()和arguments对象</h2><blockquote>
+<p>学习JavaScript，应该掌握函数式编程的特点和方法，为了做到这一点，详细理解函数调用和函数原型是非常有必要的。<br>打开浏览器，按F12打开浏览器控制台，选择console，让我们在console控制台里编写一些javascript代码来深入了解关于函数的一些知识。</p>
+</blockquote>
+<p><hr></p>
+<h3 id="函数原型">函数原型</h3><p>输入：<pre>Object.getOwnPropertyNames(Function.prototype);</pre><br>得到：<pre>[“length”, “name”, “arguments”, “caller”, “apply”, “bind”, “call”, “toString”, “constructor”]</pre><br>这里的输出依赖于你使用的浏览器和JavaScript版本。以上属性里，我们将讨论以下这几个：</p>
+<pre>
+ - Function.prototype.length
+ - Function.prototype.call
+ - Function.prototype.apply
+</pre>   
+
+<p>首先，我们定义一个”test”函数：</p>
+<pre>
+var test = function (a, b, c) {
+    console.log({this: this, a: a, b: b, c: c});
+}
+</pre>
+
+<p>这个函数简单记录了上下文变量(context)，即this的值，和输入参数的值。然后，我们输入不同的参数来调用这个函数：</p>
 <ul>
-<li>系统处于错误状态</li>
-<li>错误状态的一部分包含在系统的外部状态中<br>. 错误状态： 它是一种可以导致服务失效的状态<br>. 故障是产生差错的原因，但故障不一定总是立即会产生差错<br>. 从故障发生到由于该故障而发生差错的时间间隔称为故障潜伏期<br>. 故障潜伏（没有发生失效），差错潜伏，发生差错/故障</li>
+<li>test(‘a’);<br>得到：<pre>Object {this: Window, a: “a”, b: undefined, c: undefined}</pre>   </li>
+<li>test(‘this’, ‘is’, ‘cool’);<br>得到：<pre>Object {this: Window, a: “this”, b: “is”, c: “cool”}</pre> <blockquote>
+<p>我们注意到，如果我们不输入第2、3个参数，浏览器将显示undefined。此外，我们注意到这个函数默认的上下文是全局对象Window。</p>
+</blockquote>
+</li>
 </ul>
-<h3 id="故障模型">故障模型</h3><h4 id="指的是在系统的较高级别上（逻辑/门级、RTL、行为）描述物理故障的影响的模型">指的是在系统的较高级别上（逻辑/门级、RTL、行为）描述物理故障的影响的模型</h4><h4 id="建模要求：准确性，可处理性">建模要求：准确性，可处理性</h4>
+<p><hr></p>
+<h3 id="使用Function-prototype-call">使用Function.prototype.call</h3><p>调用call函数时，需要把上下文变量this作为第一个输入的参数，然后传进其他参数：<br><b>syntax：</b><pre>function.call(this, arg1, arg2, …, argn);</pre>   、</p>
+<p>因此，下面这两行是等效的：</p>
+<pre>
+test('this', 'is', 'cool');   
+test.call(Window, 'this', 'is', 'cool');
+</pre>   
+
+<h3 id="使用Function-prototype-apply">使用Function.prototype.apply</h3><p><hr><br>函数apply比call更实用一些，和call类似，apply的调用方式也是把变量this设置为输入参数序列中的第一个参数的值，但输入参数序列的第二个参数也是最后一个，以数组（或者数组对象）的方式传入。<br><b>Syntax:</b><pre>function.apply(this, [arg1, arg2, …, argn]);</pre>   </p>
+<p>因此，下面三行全部等效:   </p>
+<pre>
+tester("this", "is", "cool");   
+tester.call(window, "this", "is", "cool");   
+tester.apply(window, ["this", "is", "cool"]);   
+</pre>
+能够以数组的方式指定一个参数列表在多数时候非常有用（我们会发现这样做的好处的）。例如，Math.max是一个可变参数函数（一个函数可以接受任意数目的参数）。  
+<pre>
+Math.max(1,3,2); //=> 3   
+Math.max(2,1); //=> 2
+</pre>
+这样，如果我有一个数值数组，并且我需要利用Math.max函数找出其中最大的那个，我怎么用一行代码来做这个事儿呢？   
+<pre>
+var numbers = [3, 8, 7, 3, 1];   
+Math.max.apply(null, numbers);   
+//=> 8
+</pre> 
+<hr>
+###apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。   
+每个函数表达式在它的作用域中都有一个特殊的、可使用的局部变量：arguments。为了研究它的属性，让我们创建另一个test函数:
+<pre>
+var tester = function(a, b, c) {   
+    console.log(Object.getOwnPropertyNames(arguments));   
+};
+</pre> 
+>注：在这种情况下我们必须像上面这样使用Object.getOwnPropertyNames，因为arguments有一些属性没有标记为可以被枚举的，于是如果仅仅使用console.log(arguments)这种方式它们将不会被显示出来。   
+
+现在我们按照老办法，通过调用test函数来测试下：
+<pre>
+test("a", "b", "c");
+//=> ["0", "1", "2", "length", "callee"]
+
+test.apply(null, ["a"]);
+//=> ["0", "length", "callee"]
+</pre>
+
+<p>arguments变量的属性中包括了对应于传入函数的每个参数的属性，这些和.length属性、.callee属性没什么不同。<br>.callee属性提供了调用当前函数的函数的引用，但是这并不被所有的浏览器支持。就目前而言，我们忽略这个属性。<br>让我们重新定义一下我们的test函数，让它丰富一点：</p>
+<pre>
+var tester = function() {
+    console.log({
+        'this': this,
+        'arguments': arguments,
+        'length': arguments.length
+    });
+};
+tester.apply(null, ["a", "b", "c"]);
+//=> { this: null, arguments: { 0: "a", 1: "b", 2: "c" }, length: 3 }
+</pre>
+
+<p>Arguments:是对象还是数组？<br>我们看得出，arguments完全不是一个数组，虽然多多少少有点像。在很多情况下，尽管不是，我们还是希望把它当作数组来处理。把arguments转换成一个数组，这有个非常不错的快捷小函数：</p>
+<pre>
+    function toArray(args) {
+        return Array.prototype.slice.call(args);
+    }
+
+    var example = function(){
+        console.log(arguments);
+        console.log(toArray(arguments));
+    };
+
+    example("a", "b", "c");
+    //=> { 0: "a", 1: "b", 2: "c" }
+        //=> ["a", "b", "c"]
+</pre>
+
+<blockquote>
+<p>这里我们利用Array.prototype.slice方法把类数组对象转换成数组。因为这个，在与.apply同时使用的时候arguments对象最终会极其有用。</p>
+</blockquote>
+
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
     
-    <a class="pull-right" href="/2015/04/25/Design-Patterns/">
-        Design Patterns →
+    <a class="pull-right" href="/2016/03/14/couse-note-1/">
+        信息系统管理与安全课堂笔记 →
     </a>
     
 </nav>
 
         <div class="duoshuo">
-<div class="ds-thread" data-thread-key="2016/03/14/couse-note/" data-title="信息系统管理与安全课堂笔记" data-url="http://yoursite.com/2016/03/14/couse-note/"></div>
+<div class="ds-thread" data-thread-key="2016/03/27/JavaScript学习笔记-1/" data-title="JavaScript学习笔记(1)" data-url="http://yoursite.com/2016/03/27/JavaScript学习笔记-1/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"duoshuo_name"};
 (function() {

@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>JavaScript学习笔记(2) | Ji Xiang&#39;s blog</title>
+  <title>JavaScript学习笔记(3) | Ji Xiang&#39;s blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -251,84 +251,76 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2016-03-23T08:08:12.000Z" itemprop="datePublished">
-          2016-03-23
+      <time datetime="2016-03-27T08:47:19.000Z" itemprop="datePublished">
+          2016-03-27
       </time>
     
     
     | 
-    <a href='/tags/JavaScript/'>JavaScript</a>
+    <a href='/tags/JavaScript-Closure/'>JavaScript Closure</a>
     
     
 </span>
-                <h1>JavaScript学习笔记(2)</h1>
+                <h1>JavaScript学习笔记(3)</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h1 id="JavaScript内存管理">JavaScript内存管理</h1><h2 id="1-_简介"><b>1. 简介</b></h2><p>低级语言，比如C，有低级的内存管理基元，像malloc(),free()。另一方面，JavaScript的内存基元在变量（对象，字符串等等）创建时分配，然后在他们不再被使用时“自动”释放。后者被称为垃圾回收。这个“自动”是产生混淆的源头，并给JavaScript（和其他高级语言）开发者一个印象：他们可以不用考虑内存管理。这是错误的。   </p>
-<h2 id="2-_内存生命周期"><b>2. 内存生命周期</b></h2><p>不管什么程序语言，内存生命周期基本一致：<br>分配你所需要的内存   </p>
-<ol>
-<li>使用它（读、写）   </li>
-<li>当它不被使用时释放   </li>
-<li>当它不被使用时释放<br>第一二部分过程在所有语言中都很清晰。最后一步在低级语言中很清晰，但是在像JavaScript等高级语言中，最后一步不清晰。    </li>
-</ol>
-<h2 id="3-_JavaScript的内存分配"><b>3. JavaScript的内存分配</b></h2><h3 id="3-1_值得初始化">3.1 值得初始化</h3><p>为了不让程序员费心分配内存，JavaScript在定义变量时完成内存分配。   </p>
-<pre>
-var n = 123; // 给数值变量分配内存
-var s = "azerty"; // 给字符型 
-var o = {
-  a: 1,
-  b: null
-}; // 为对象及其包含变量分配内存
-var a = [1, null, "abra"]; // 为数组及其包含变量分配内存（就像对象一样）
-function f(a){
-  return a + 2;
-} // 为函数（可调用的对象）分配内存
-// 函数表达式也能分配一个对象
-someElement.addEventListener('click', function(){
-  someElement.style.backgroundColor = 'blue';
-}, false);
+      		<h1 id="JavaScript_Closure">JavaScript Closure</h1><p>学习JavaScript，不能不知道<strong>闭包(closure)</strong>的概念和作用。闭包是JavaScript中重要的一个概念，对于初学者来讲，闭包很难理解和运用。但只有理解了闭包的基本概念，才能正确的使用它；同样的，只有配合正确的实践，我们才有更加深刻的理解。因此，这片文章借鉴了很多前人的总结和经验，只为更好的理解闭包。   </p>
+<h2 id="闭包的概念">闭包的概念</h2><p>对于码农来说，学习一门新技术，除了看官方API和相关文档，示例代码的对我们的帮助可能更大，因为代码的运行结果更加直观，能加深我们的理解。下面贴出大牛的代码，号称世上最简单的闭包：   </p>
+<pre><code>
+function A(){
+  function B() {
+    console.log('Hello closure!');
+  }
+  return B;
+} 
+var c = A();
+// c(); Hello closure!
+</code>
 </pre>
 
-<h3 id="3-2_通过函数调用的内存分配">3.2 通过函数调用的内存分配</h3><p>有些函数调用结果是分配对象内存：</p>
-<p><pre><br>var d = new Date(); //分配一个Date对象<br>var e = document.createElement(‘div’); //分配一个DOM元素<br></pre><br>有些方法分配新变量或者新对象：</p>
-<p><pre><br>var s = “azerty”;<br>var s2 = s.substr(0, 3); // s2是一个新字符串<br>//因为字符串是不变量，JavaScript可能没有分配内存，但只是存储了0-3的范围。<br>var a = [“ouais ouais”, “nan nan”];<br>var a2 = [“generation”, “nan nan”];<br>var a3 = a.concat(a2); // 新数组中有连接数组a和数组a2中的四个元素。<br></pre></p>
-<h3 id="3-3_值的使用">3.3 值的使用</h3><p>使用值的过程实际上是对分配内存进行读取与写入的操作。读取与写入可能是写入一个变量或者一个对象的属性值，甚至传递函数的参数。   </p>
-<h3 id="3-4_当内存不再需要使用时释放">3.4 当内存不再需要使用时释放</h3><p>大多数内存管理的问题都在这个阶段。在这里最艰难的任务是找到“所分配的内存确实已经不再需要了”。它往往要求开发人员来确定在程序中哪一块内存不再需要并且释放它。<br>高级语言解释器嵌入了“垃圾回收器”，它的主要工作是跟踪内存的分配和使用，以便当分配的内存不再使用时，自动释放它。这只能是一个近似的过程，因为要知道是否仍然需要某块内存是无法判定的(无法通过某种算法解决).</p>
-<h2 id="4-_垃圾回收"><b>4. 垃圾回收</b></h2><p>如上文所述自动寻找是否一些内存“不再需要”的问题是无法判定的。因此，垃圾回收实现只能有限制的解决一般问题。本节将解释必要的概念，了解主要的垃圾回收算法和它们的局限性。</p>
-<h3 id="4-1_引用">4.1 引用</h3><p>垃圾回收算法主要依赖于引用的概念。在内存管理的环境中，一个对象如果有访问另一个对象的权限（隐式或者显式），叫做一个对象引用另一个对象。例如，一个Javascript对象具有对它 原型 的引用（隐式引用）和对它属性的引用（显式引用）。<br>在这里，“对象”的概念不仅特指Javascript对象，还包括函数作用域（或者全局词法作用域）。</p>
-<h3 id="4-2_引用计数垃圾收集">4.2 引用计数垃圾收集</h3><p>这是最简单的垃圾收集算法。此算法把“对象是否不再需要”简化定义为“对象有没有其他对象引用到它”。如果没有引用指向该对象（零引用），对象将被垃圾回收机制回收。<br>例如：</p>
-<p><pre><br>var o = {<br>  a: {<br>    b:2<br>  }<br>};<br>// 两个对象被创建，一个作为另一个的属性被引用，另一个被分配给变量o<br>// 很显然，没有一个可以被垃圾收集<br>var o2 = o; // o2变量是第二个对“这个对象”的引用<br>o = 1; // 现在，“这个对象”的原始引用o被o2替换了<br>var oa = o2.a; // 引用“这个对象”的a属性<br>// 现在，“这个对象”有两个引用了，一个是o2，一个是oa<br>o2 = “yo”; // 最初的对象现在已经是零引用了<br>// 他可以被垃圾回收了<br>// 然而它的属性a的对象还在被oa引用，所以还不能回收<br>oa = null; // a属性的那个对象现在也是零引用了<br>// 它可以被垃圾回收了<br></pre><br><b>限制：循环引用</b></p>
-<p>这个简单的算法有一个限制，就是如果一个对象引用另一个（形成了循环引用），他们可能“不再需要”了，但是他们不会被回收。</p>
-<p><pre><br>function f(){<br>  var o = {};<br>  var o2 = {};<br>  o.a = o2; // o 引用 o2<br>  o2.a = o; // o2 引用 o<br>  return “azerty”;<br>}<br>f();<br>// 两个对象被创建，并互相引用，形成了一个循环<br>// 他们被调用之后不会离开函数作用域<br>// 所以他们已经没有用了，可以被回收了<br>// 然而，引用计数算法考虑到他们互相都有至少一次引用，所以他们不会被回收<br></pre><br><b>实际当中的例子</b><br>IE 6, 7 对DOM对象进行引用计数回收。对他们来说，一个常见问题就是内存泄露：</p>
-<p><pre><br>var div = document.createElement(“div”);<br>div.onclick = function(){<br>  doSomething();<br>};<br>// div有了一个引用指向事件处理属性onclick<br>// 事件处理也有一个对div的引用可以在函数作用域中被访问到<br>// 这个循环引用会导致两个对象都不会被垃圾回收<br></pre></p>
-<h3 id="4-3_标记-清除算法">4.3 标记-清除算法</h3><p>这个算法把“对象是否不再需要”简化定义为“对象是否可以获得”。</p>
-<p>这个算法假定设置一个叫做根的对象（在Javascript里，根是全局对象）。定期的，垃圾回收器将从根开始，找所有从根开始引用的对象，然后找这些对象引用的对象……从根开始，垃圾回收器将找到所有可以获得的对象和所有不能获得的对象。</p>
-<p>这个算法比前一个要好，因为“有零引用的对象”总是不可获得的，但是相反却不一定，参考“循环引用”。</p>
-<p>从2012年起，所有现代浏览器都使用了标记-清除垃圾回收算法。所有对JavaScript垃圾回收算法的改进都是基于标记-清除算法的改进，并没有改进标记-清除算法本身和它对“对象是否不再需要”的简化定义。</p>
-<p><b>循环引用不再是问题了</b></p>
-<p>在上面的示例中，函数调用返回之后，两个对象从全局对象出发无法获取。因此，他们将会被垃圾回收器回收。<br>第二个示例同样，一旦 div 和其事件处理无法从根获取到，他们将会被垃圾回收器回收<br>。</p>
-<p><b>限制: 那些无法从根对象查询到的对象都将被清除</b></p>
-<p>尽管这是一个限制，但实践中我们很少会碰到类似的情况，所以开发者不太会去关心垃圾回收机制。</p>
+<p>确实，这个示例代码真的不能再简单了。这段代码“翻译”后可以表示为：   </p>
+<ol>
+<li>定义了一个函数A   </li>
+<li>在A中定义了内部函数B   </li>
+<li>在A中返回B（确切的讲，在A中返回B的引用）   </li>
+<li>执行A()，把A的返回值-函数B()的引用复制给变量c   </li>
+<li>执行 函数B()，输出结果</li>
+</ol>
+<p>根据上述例子，闭包可定义为：<br><strong>当一个内部函数被其外部函数之外的变量引用时，就形成了一个闭包。</strong></p>
+<h2 id="闭包的作用">闭包的作用</h2><p>在了解闭包的作用之前，我们先了解一下JavaScript中的垃圾回收(GC)机制：**在JavaScript中，如果一个对象不再被引用，那么这个对象就会被GC回收，否则这个对象会一直保存在内存中。<br>在上述例子中，B定义在A中，因此B依赖于A，而外部变量c获得了内部函数B的引用，也就是说，A被间接引用了，所以A不会被GC回收，而是一直保持上下文，在同一个引用调用结束前，会一直保存在内存中，直到调用结束。<br>示例2：</p>
+<pre><code>
+function A() {
+  var count = 0;
+  function B() {
+    count++;
+    console.log(count);
+  }
+  return B;
+}
+var c = A();
+c();//1
+c();//2
+c();//3
+</code></pre>
+
+<p>count是A中的一个变量，它的值在B中被改变，函数B每执行一次，count的值在原来的基础上累加1，A被变量c引用，不会被GC，因此，A中的count一直保存在内存中，c每执行一次，由于保留了上下文，count的值会在原来的基础上增加1。<br>这就是闭包的作用，有时候我们需要一个模块中定义这样一个变量：希望这个变量一直保存在内存中，但又不会“污染”全局的变量，这个时候，我们就可以用闭包来定义这个模块。   </p>
+<h2 id="结语">结语</h2><p>上面的例子只是最简陋的写法，实际中不会这么写。这里只是为了加深理解。当然，如果要全面理解闭包，仅凭上面的文字和代码是远远不够的。在项目中不妨试着使用闭包，用的多了自然会有独到的理解。</p>
 
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2016/03/27/JavaScript学习笔记-3/" style="float: left;">
-        ← JavaScript学习笔记(3)
-    </a>
     
-    
-    <a class="pull-right" href="/2016/03/19/JavaScript学习笔记-1/">
-        JavaScript学习笔记(1) →
+    <a class="pull-right" href="/2016/03/23/JavaScript学习笔记-2/">
+        JavaScript学习笔记(2) →
     </a>
     
 </nav>
 
         <div class="duoshuo">
-<div class="ds-thread" data-thread-key="2016/03/23/JavaScript学习笔记-2/" data-title="JavaScript学习笔记(2)" data-url="http://yoursite.com/2016/03/23/JavaScript学习笔记-2/"></div>
+<div class="ds-thread" data-thread-key="2016/03/27/JavaScript学习笔记-3/" data-title="JavaScript学习笔记(3)" data-url="http://yoursite.com/2016/03/27/JavaScript学习笔记-3/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"duoshuo_name"};
 (function() {

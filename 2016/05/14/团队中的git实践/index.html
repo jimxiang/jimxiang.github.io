@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>How to build your owner blog with HEXO | Ji Xiang&#39;s blog</title>
+  <title>团队中的git实践 | Ji Xiang&#39;s blog</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -275,67 +275,58 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2015-04-18T10:25:01.000Z" itemprop="datePublished">
-          2015-04-18
+      <time datetime="2016-05-14T12:50:07.000Z" itemprop="datePublished">
+          2016-05-14
       </time>
     
     
     | 
-    <a href='/tags/Hexo-Blog/'>Hexo Blog</a>
+    <a href='/tags/team-work-git/'>team work | git</a>
     
     
 </span>
-                <h1>How to build your owner blog with HEXO</h1>
+                <h1>团队中的git实践</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h2 id="今天真高兴，涨了不少姿势。">今天真高兴，涨了不少姿势。</h2><p>1.学会了使用Hexo搭建一个静态博客<br>2.学会了使用MarkDown这种简单的标记语言编写文章   </p>
-<p>前几天看到学长在用MarkDown写博客，感觉逼格很高，程序员风格十足。今天终于入门了，现把一些主要步骤记录一下   </p>
-<p>1.首先要有一个<a href="https://github.com" target="_blank" rel="external">github</a>账号，然后建立一个repository(仓库)，关键点在于 <strong>仓库名称要与你的账号名称相同，并在后面加上github.io</strong><br>例如: 我的github叫做 <strong>jimxiang</strong>,那么就建一个名为 <strong>jimxiang.github.io</strong>的仓库。接下来要配置SSH,网上教程很多，这里不再赘述。<br>2.使用node.js里的npm在命令行里进行接下来的操作   </p>
-<h2 id="安装Hexo">安装Hexo</h2><p><pre><code> $ npm install -g hexo // -g  表示把hexo安装到全局，不限于当前文件夹，以后重建项目时不必再次安装</code></pre>   </p>
-<h2 id="部署Hexo">部署Hexo</h2><p><pre><code> $ hexo init </code></pre><br>现在已经搭建好本地的hexo博客了，执行以下命令   </p>
-<p><pre><code> $ hexo g   // 生成静态页面至public目录</code></pre></p>
-<p><pre><code> $ hexo s   // 开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</code></pre>   </p>
-<h2 id="到浏览器输入_localhost:4000_看看">到浏览器输入 <strong>localhost:4000</strong> 看看</h2><h2 id="更换博客主题">更换博客主题</h2><p>github上有许多<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">博客主题</a>。现在clone一个你最喜欢的主题   </p>
-<p><pre><code> $ git clone <a href="https://github.com/...(主题地址" target="_blank" rel="external">https://github.com/...(主题地址</a>)</code></pre></p>
-<h2 id="例如">例如</h2><p><pre><code> $ git clone <a href="https://github.com/wuchong/jacman.git" target="_blank" rel="external">https://github.com/wuchong/jacman.git</a> themes/jacman</code></pre>   </p>
-<h2 id="启用主题">启用主题</h2><p>修改Hexo目录下的config.yml配置文件中的theme属性，将其设置为jacman。   </p>
-<p><pre><code> theme: jacman</code></pre>   </p>
-<h3 id="注意：Hexo有两个config-yml文件，一个在根目录，一个在theme下，此时修改的是在根目录下的。">注意：Hexo有两个config.yml文件，一个在根目录，一个在theme下，此时修改的是在根目录下的。</h3><h2 id="更新主题">更新主题</h2><p><pre><code> $ cd themes/jacman</code></pre>   </p>
-<p><pre><code> $ git pull</code></pre>   </p>
-<h2 id="使用与调试">使用与调试</h2><p>启动本地服务，实时查看你的blog   </p>
-<p><pre><code> $ hexo serve</code></pre>   </p>
-<h2 id="到了重要的一步：把本地的博客部署到github上（有木有很激动）">到了重要的一步：把本地的博客部署到github上（有木有很激动）</h2><p>配置 <strong>根目录下的config.yml</strong> 文件   </p>
-<p><pre><code> deploy:</code></pre>   </p>
-<p><pre><code> type: git</code></pre>   </p>
-<p><pre><code> repository: git@github.com/…(你自己的github地址)</code></pre></p>
-<p><pre><code> branch: master</code></pre>   </p>
-<h3 id="npm命令">npm命令</h3><p><pre><code> $ hexo clean</code></pre>   </p>
-<p><pre><code> $ hexo generate</code></pre>   </p>
-<p><pre><code> $ hexo deploy  //这一步会让你输入你的github用户名和密码</code></pre>   </p>
-<h2 id="到此为止，你可以登陆_xxx-github-io_查看你的博客啦!">到此为止，你可以登陆 <strong>xxx.github.io</strong> 查看你的博客啦!</h2><h2 id="Hexo修改blog主页内容：">Hexo修改blog主页内容：</h2><p>修改根目录下的 <strong>config.yml</strong> 文件   </p>
-<h2 id="新建文章">新建文章</h2><p><pre><code>$ hexo new “（文章名）” //新建一个xxx.md的文件</code></pre><br>使用 <strong>记事本、sublime text、chrome插件</strong> 等编辑 <em>source/_posts文件下的.md</em> 文件，借助<a href="http://www.markdown.cn/" target="_blank" rel="external">MakeDown</a>语言写入你的文章</p>
-<h2 id="写完后，推送到服务器上">写完后，推送到服务器上</h2><p><pre><code> $ hexo g</code></pre>   </p>
-<p><pre><code> $ hexo d</code></pre>   </p>
-<h2 id="现在我们完成了用Hexo和github建立静态博客，是不是很有趣呢？赶紧动手吧！">现在我们完成了用Hexo和github建立静态博客，是不是很有趣呢？赶紧动手吧！</h2>
+      		<p>为了获得软件质量和开发效率的双重收益，软件项目开发早已不再是一个人的事情了，而是一个团队(team)的事情。不但如此，现今的软件开发规模越来越大，<br>所涉及的技术门类也越来越复杂，一个人难以独挑大梁，同时，一个人也难以在短周期内完成复杂项目。团队的意义不仅在于提高开发效率，更能保证开发质量，<br>一人负责一块开发内容就可以用充足的精力和热情把这块内容做的更加完美。说到团队开发，总是离不开项目管理和版本控制工具，这里我们将会讨论版本控制<br>工具——git在团队中正确实践的姿势。<br>Git/Github是任何一个非小白程序员都知道或使用的工具/网站，随着软件开发学龄的深入，我自己的体会是越来越离不开这个东西了。一个人用git可以用得<br>随心所欲，但团队中就是另外一回事了。一个人的项目，代码怎么改、怎么提交都不会有冲突，这样也会养成一些不良习惯，把这些习惯带到团队开发中，轻则<br>让队友讨厌，重则酿成大祸（这不是危言耸听）。   </p>
+<h3 id="习惯养成">习惯养成</h3><p>如果一个团队在使用git时没有一些规范，那将是一场难以醒来的噩梦！然而，规范固然重要，但更重要的是个人素质，在使用git时需要自己养成良好的习惯。</p>
+<h4 id="提交">提交</h4><blockquote>
+<p>Commit Message格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;type&#62;(&#60;scope&#62;): &#60;subject&#62;&#10;&#60;space&#62;&#10;&#60;body&#62;&#10;&#60;space&#62;&#10;&#60;footer&#62;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>上面是一次提交后Message格式规范，分成标题、内容详情、结尾三个部分，各有各的用处。<br>头部即首行，是可以直接在页面中预览的部分，一共有三个部分<type>, <scope>, <subject>, 含义分别如下：   </subject></scope></type></p>
+<blockquote>
+<p>Type<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- feat: &#26032;&#21151;&#33021;(feature)&#10;- fix: &#20462;&#34917;bug&#10;- docs: &#25991;&#26723;(documentation)&#10;- style: &#26684;&#24335;(&#19981;&#24433;&#21709;&#20195;&#30721;&#36816;&#34892;&#30340;&#21464;&#21160;)&#10;- refactor: &#37325;&#26500;(&#21363;&#19981;&#26159;&#26032;&#22686;&#21151;&#33021;&#65292;&#20063;&#19981;&#26159;&#20462;&#25913;bug&#30340;&#20195;&#30721;&#21464;&#21160;)&#10;- test: &#22686;&#21152;&#27979;&#35797;&#10;- chore: &#26500;&#24314;&#36807;&#31243;&#25110;&#36741;&#21161;&#24037;&#20855;&#30340;&#21464;&#21160;</span><br></pre></td></tr></table></figure></p>
+<p>Scope<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#29992;&#26469;&#35828;&#26126;&#26412;&#27425;&#25552;&#20132;&#24433;&#21709;&#30340;&#33539;&#22260;&#65292;&#21363;&#31616;&#35201;&#35828;&#26126;&#20462;&#25913;&#20250;&#28041;&#21450;&#30340;&#37096;&#20998;&#12290;</span><br></pre></td></tr></table></figure></p>
+<p>Subject<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#29992;&#26469;&#31616;&#35201;&#25551;&#36848;&#26412;&#27425;&#25913;&#21160;&#65292;&#27010;&#36848;&#23601;&#22909;&#20102;&#65292;&#22240;&#20026;&#21518;&#38754;&#36824;&#20250;&#22312;Body&#37324;&#32473;&#20986;&#20855;&#20307;&#20449;&#24687;&#12290;&#24182;&#19988;&#26368;&#22909;&#36981;&#24490;&#10;&#19979;&#38754;&#19977;&#26465;&#65306;&#10; - &#20197;&#21160;&#35789;&#24320;&#22836;&#65292;&#20351;&#29992;&#31532;&#19968;&#20154;&#31216;&#29616;&#22312;&#26102;&#10; - &#39318;&#23383;&#27597;&#19981;&#35201;&#22823;&#20889;&#10; - &#32467;&#23614;&#19981;&#29992;&#21477;&#21495;( . )</span><br></pre></td></tr></table></figure></p>
+<p>Body<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;body&#62;&#37324;&#30340;&#20869;&#23481;&#26159;&#23545;&#19978;&#38754;subject&#37324;&#20869;&#23481;&#30340;&#23637;&#24320;&#65292;&#22312;&#27492;&#20316;&#26356;&#21152;&#35814;&#23613;&#30340;&#25551;&#36848;&#65292;&#20869;&#23481;&#37324;&#24212;&#35813;&#21253;&#25324;&#20462;&#25913;&#21160;&#26426;&#21644;&#20462;&#25913;&#21069;&#21518;&#30340;&#23545;&#27604;&#12290;</span><br></pre></td></tr></table></figure></p>
+<p>Footer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;footer&#62;&#37324;&#20027;&#35201;&#25918;&#32622;&#19981;&#20860;&#23481;&#21464;&#26356;&#21644;Issue&#20851;&#38381;&#30340;&#20449;&#24687;&#12290;</span><br></pre></td></tr></table></figure></p>
+<p>Revert<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#27492;&#22806;&#22914;&#26524;&#38656;&#35201;&#25764;&#38144;&#20043;&#21069;&#30340;&#25552;&#20132;&#65292;&#37027;&#20040;&#26412;&#27425;&#25552;&#20132;Message&#20013;&#24517;&#39035;&#20197;revert: &#24320;&#22836;&#65292;&#21518;&#38754;&#32039;&#36319;&#21069;&#38754;&#25551;&#36848;&#30340;Header&#37096;&#20998;&#65292;&#26684;&#24335;&#19981;&#21464;&#12290;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>在具体开发工作中主要需要遵守的原则就是[使每次提交都有质量]，只要坚持做到以下几点：</p>
+<ol>
+<li>提交时的粒度是一个小功能点或者一个bug fix，这样进行恢复等操作时能够将[误伤]减到最低；</li>
+<li>用一句简练的话写在第一行，然后空一行稍微详细阐述提交所增加或修改的地方；</li>
+<li>不要没提交一次就推送一次，多积攒几个提交后一次性推送，这样可以避免在进行一次提交后发现代码中还有小错误。<br>```<br>加入代码已经提交了，对这次提交的内容进行检查时发现里面有个变量单次拼错了或者其他失误，只要还没有推送到远程，<br>就有一个不被他人发觉你的疏忽的补救方法——<br>首先，把失误修正之后提交，可以用与上次提交相同的Message。<br>然后，终端中执行<code>git rebase -i [SHA]</code>，其中SHA是上一次提交之前的那次提交的。<br>最后，这样就将两次提交的节点合并成一个，甚至能够修改提交信息。   </li>
+</ol>
+<h4 id="推送">推送</h4><p>当自己一个人进行开发时，在功能完成之前不要急着创建远程分支。   </p>
+<h4 id="拉取和合并">拉取和合并</h4><p>在将其他分支的代码合并到当前分支时，如果那个分支是当前分支的父分支，为了保持图表的可读性和可追踪性，<br>可以考虑用 git rebase 来代替 git merge；反过来或者不是父子关系的两个分支以及互相已经 git merge 过的分支，<br>就不要采用 git rebase 了，避免出现重复的冲突和提交节点。   </p>
+<h3 id="最后献上一句话">最后献上一句话</h3><p>日拱一卒，功不唐捐。</p>
+
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="pagination" role="pagination">
     
-    <a class="pull-left" href="/2015/04/25/Design-Patterns/" style="float: left;">
-        ← Design Patterns
-    </a>
     
-    
-    <a class="pull-right" href="/2015/04/18/Quick-Start/">
-        Quick Strat →
+    <a class="pull-right" href="/2016/05/03/数字证书基础知识/">
+        数字证书基础知识 →
     </a>
     
 </nav>
 
         <div class="duoshuo">
-<div class="ds-thread" data-thread-key="2015/04/18/How-to-build-your-owner-blog-with-HEXO/" data-title="How to build your owner blog with HEXO" data-url="http://yoursite.com/2015/04/18/How-to-build-your-owner-blog-with-HEXO/"></div>
+<div class="ds-thread" data-thread-key="2016/05/14/团队中的git实践/" data-title="团队中的git实践" data-url="http://yoursite.com/2016/05/14/团队中的git实践/"></div>
 <script type="text/javascript">
 var duoshuoQuery = {short_name:"duoshuo_name"};
 (function() {

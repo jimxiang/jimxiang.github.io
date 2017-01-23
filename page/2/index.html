@@ -241,6 +241,152 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/18/How-to-build-your-owner-blog-with-HEXO/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Ji Xiang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://o7bp9e1ec.bkt.clouddn.com/1485173143816">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Ji Xiang's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Ji Xiang's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/18/How-to-build-your-owner-blog-with-HEXO/" itemprop="url">
+                  How to build your owner blog with HEXO
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-04-18T18:25:01+08:00">
+                2015-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="今天真高兴，涨了不少姿势。">今天真高兴，涨了不少姿势。</h2><p>1.学会了使用Hexo搭建一个静态博客<br>2.学会了使用MarkDown这种简单的标记语言编写文章   </p>
+<p>前几天看到学长在用MarkDown写博客，感觉逼格很高，程序员风格十足。今天终于入门了，现把一些主要步骤记录一下   </p>
+<p>1.首先要有一个<a href="https://github.com" target="_blank" rel="external">github</a>账号，然后建立一个repository(仓库)，关键点在于 <strong>仓库名称要与你的账号名称相同，并在后面加上github.io</strong><br>例如: 我的github叫做 <strong>jimxiang</strong>,那么就建一个名为 <strong>jimxiang.github.io</strong>的仓库。接下来要配置SSH,网上教程很多，这里不再赘述。<br>2.使用node.js里的npm在命令行里进行接下来的操作   </p>
+<h2 id="安装Hexo">安装Hexo</h2><p><pre><code> $ npm install -g hexo // -g  表示把hexo安装到全局，不限于当前文件夹，以后重建项目时不必再次安装</code></pre>   </p>
+<h2 id="部署Hexo">部署Hexo</h2><p><pre><code> $ hexo init </code></pre><br>现在已经搭建好本地的hexo博客了，执行以下命令   </p>
+<p><pre><code> $ hexo g   // 生成静态页面至public目录</code></pre></p>
+<p><pre><code> $ hexo s   // 开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</code></pre>   </p>
+<h2 id="到浏览器输入_localhost:4000_看看">到浏览器输入 <strong>localhost:4000</strong> 看看</h2><h2 id="更换博客主题">更换博客主题</h2><p>github上有许多<a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="external">博客主题</a>。现在clone一个你最喜欢的主题   </p>
+<p><pre><code> $ git clone <a href="https://github.com/...(主题地址" target="_blank" rel="external">https://github.com/...(主题地址</a>)</code></pre></p>
+<h2 id="例如">例如</h2><p><pre><code> $ git clone <a href="https://github.com/wuchong/jacman.git" target="_blank" rel="external">https://github.com/wuchong/jacman.git</a> themes/jacman</code></pre>   </p>
+<h2 id="启用主题">启用主题</h2><p>修改Hexo目录下的config.yml配置文件中的theme属性，将其设置为jacman。   </p>
+<p><pre><code> theme: jacman</code></pre>   </p>
+<h3 id="注意：Hexo有两个config-yml文件，一个在根目录，一个在theme下，此时修改的是在根目录下的。">注意：Hexo有两个config.yml文件，一个在根目录，一个在theme下，此时修改的是在根目录下的。</h3><h2 id="更新主题">更新主题</h2><p><pre><code> $ cd themes/jacman</code></pre>   </p>
+<p><pre><code> $ git pull</code></pre>   </p>
+<h2 id="使用与调试">使用与调试</h2><p>启动本地服务，实时查看你的blog   </p>
+<p><pre><code> $ hexo serve</code></pre>   </p>
+<h2 id="到了重要的一步：把本地的博客部署到github上（有木有很激动）">到了重要的一步：把本地的博客部署到github上（有木有很激动）</h2><p>配置 <strong>根目录下的config.yml</strong> 文件   </p>
+<p><pre><code> deploy:</code></pre>   </p>
+<p><pre><code> type: git</code></pre>   </p>
+<p><pre><code> repository: git@github.com/…(你自己的github地址)</code></pre></p>
+<p><pre><code> branch: master</code></pre>   </p>
+<h3 id="npm命令">npm命令</h3><p><pre><code> $ hexo clean</code></pre>   </p>
+<p><pre><code> $ hexo generate</code></pre>   </p>
+<p><pre><code> $ hexo deploy  //这一步会让你输入你的github用户名和密码</code></pre>   </p>
+<h2 id="到此为止，你可以登陆_xxx-github-io_查看你的博客啦!">到此为止，你可以登陆 <strong>xxx.github.io</strong> 查看你的博客啦!</h2><h2 id="Hexo修改blog主页内容：">Hexo修改blog主页内容：</h2><p>修改根目录下的 <strong>config.yml</strong> 文件   </p>
+<h2 id="新建文章">新建文章</h2><p><pre><code>$ hexo new “（文章名）” //新建一个xxx.md的文件</code></pre><br>使用 <strong>记事本、sublime text、chrome插件</strong> 等编辑 <em>source/_posts文件下的.md</em> 文件，借助<a href="http://www.markdown.cn/" target="_blank" rel="external">MakeDown</a>语言写入你的文章</p>
+<h2 id="写完后，推送到服务器上">写完后，推送到服务器上</h2><p><pre><code> $ hexo g</code></pre>   </p>
+<p><pre><code> $ hexo d</code></pre>   </p>
+<h2 id="现在我们完成了用Hexo和github建立静态博客，是不是很有趣呢？赶紧动手吧！">现在我们完成了用Hexo和github建立静态博客，是不是很有趣呢？赶紧动手吧！</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/18/Quick-Start/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -406,7 +552,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -417,7 +563,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

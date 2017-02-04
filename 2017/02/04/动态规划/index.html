@@ -96,7 +96,7 @@
 动态规划(DP)是算法设计思想当中最难也是最有趣的部分了，动态规划适用于有重叠子问题和最优子结构性质的问题，是一种在数学、计算机科学和经济学中经常使用的，通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。使用动态规划方法解题有较高的时间效率，关键在于它减少了很多不必要的计算和重复计算的部分。
 
 它的思想就是把一个大的问题进行拆分，细分成一个个小的子问题，且">
-<meta property="og:updated_time" content="2017-02-04T09:51:01.511Z">
+<meta property="og:updated_time" content="2017-02-04T10:20:20.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="动态规划">
 <meta name="twitter:description" content="动态规划算法的思路以及实现介绍
@@ -340,6 +340,9 @@
 </blockquote>
 <p>那么就有 13 &lt; 16 &lt; 38 &lt; 44 &lt; 63 长度为5的不下降子序列。<br>但是经过观察实际上还有 7 &lt; 9 &lt; 16 &lt; 18 &lt; 19 &lt; 21 &lt; 22 &lt; 63 长度为8的不下降子序列，那么是否还有更长的不下降子序列呢？请找出最长的不下降子序列。</p>
 <h4 id="输入格式">输入格式</h4><blockquote>
+<p>第一行为 n，表示 n 个数(n &lt;= 100000)，第二行为 n 个数的数值(数字之间用空格隔开且最后一个数字末尾不能留有空格)。</p>
+</blockquote>
+<h4 id="输出格式">输出格式</h4><blockquote>
 <p>一个整数，表示最长不下降序列的长度。</p>
 </blockquote>
 <h4 id="输入例子">输入例子</h4><blockquote>
@@ -662,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划算法的思路以及实现"><span class="nav-number">1.</span> <span class="nav-text">动态规划算法的思路以及实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">1.2.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例如"><span class="nav-number">1.2.1.</span> <span class="nav-text">例如</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.2.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入例子"><span class="nav-number">1.2.3.</span> <span class="nav-text">输入例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出例子"><span class="nav-number">1.2.4.</span> <span class="nav-text">输出例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.2.5.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">1.2.6.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划算法的思路以及实现"><span class="nav-number">1.</span> <span class="nav-text">动态规划算法的思路以及实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">1.2.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例如"><span class="nav-number">1.2.1.</span> <span class="nav-text">例如</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入格式"><span class="nav-number">1.2.2.</span> <span class="nav-text">输入格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出格式"><span class="nav-number">1.2.3.</span> <span class="nav-text">输出格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输入例子"><span class="nav-number">1.2.4.</span> <span class="nav-text">输入例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出例子"><span class="nav-number">1.2.5.</span> <span class="nav-text">输出例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.2.6.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#代码"><span class="nav-number">1.2.7.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

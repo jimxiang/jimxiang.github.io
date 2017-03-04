@@ -1,0 +1,745 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="数字证书," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在为了更好地理解其中证书的特性，这里对数字证书以及相关的知识进行了整理和总结。
+
+在讲数字证书之前必须要讲非对称加密算法和摘要算法，因为数字证书的基础就是各种加解密算法(非对称加密、摘要算法)，而其中的核心就是非对称加密算法了。目前而言加密方法可以分为两大类，一类是单钥加密(private key cryptography)也可以称为对称加密，还有一类叫做双钥加密(public key crypt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字证书基础知识">
+<meta property="og:url" content="http://yoursite.com/2016/05/03/数字证书基础知识/index.html">
+<meta property="og:site_name" content="Ji Xiang's blog">
+<meta property="og:description" content="在为了更好地理解其中证书的特性，这里对数字证书以及相关的知识进行了整理和总结。
+
+在讲数字证书之前必须要讲非对称加密算法和摘要算法，因为数字证书的基础就是各种加解密算法(非对称加密、摘要算法)，而其中的核心就是非对称加密算法了。目前而言加密方法可以分为两大类，一类是单钥加密(private key cryptography)也可以称为对称加密，还有一类叫做双钥加密(public key crypt">
+<meta property="og:updated_time" content="2017-01-24T02:26:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数字证书基础知识">
+<meta name="twitter:description" content="在为了更好地理解其中证书的特性，这里对数字证书以及相关的知识进行了整理和总结。
+
+在讲数字证书之前必须要讲非对称加密算法和摘要算法，因为数字证书的基础就是各种加解密算法(非对称加密、摘要算法)，而其中的核心就是非对称加密算法了。目前而言加密方法可以分为两大类，一类是单钥加密(private key cryptography)也可以称为对称加密，还有一类叫做双钥加密(public key crypt">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/05/03/数字证书基础知识/"/>
+
+
+
+
+
+  <title> 数字证书基础知识 | Ji Xiang's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Ji Xiang's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Walk step by step and learn everyday</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/05/03/数字证书基础知识/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Ji Xiang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://o7bp9e1ec.bkt.clouddn.com/1485173143816">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Ji Xiang's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Ji Xiang's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                数字证书基础知识
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-05-03T14:54:44+08:00">
+                2016-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在为了更好地理解其中证书的特性，这里对数字证书以及相关的知识进行了整理和总结。</p>
+</blockquote>
+<p>在讲数字证书之前必须要讲<b>非对称加密算法</b>和<b>摘要算法</b>，因为数字证书的基础就是各种加解密算法(非对称加密、<br>摘要算法)，而其中的核心就是非对称加密算法了。目前而言加密方法可以分为两大类，一类是<b>单钥加密</b><br>(private key cryptography)也可以称为对称加密，还有一类叫做双钥加密(public key cryptography)也可以称为非对称加密。<br>前者的加密和解密过程都用同一套密码，后者的加密和解密过程用的是不同的密码。</p>
+<h1 id="加密算法">加密算法</h1><h3 id="1-对称加密">1.对称加密</h3><p>对称加密(也叫私钥加密)指加密和解密使用相同密钥的加密算法。有时又叫传统密码算法，就是加密密钥能够从解密密钥中推算出来，<br>同时解密密钥也可以从加密密钥中推算出来。而在大多数的对称算法中，加密密钥和解密密钥是相同的，所以也称这种加密算法为秘密<br>密钥算法或单密钥算法。   </p>
+<p>在应用该算法时，它要求发送方和接收方在安全通信之前，商定一个密钥。对称算法的安全性依赖于密钥，泄漏密钥就意味着任何人都<br>可以对他们发送或接收的消息解密，所以密钥的保密性对通信性至关重要。对称加密算法的特点是算法公开、计算量小、加密速度快、<br>加密效率高。对称加密有很多种算法，由于它效率很高，所以被广泛使用在很多加密协议的核心当中。不足之处是，交易双方都使用同<br>样钥匙，安全性得不到保证。   </p>
+<h3 id="2-常见的对称加密算法">2.常见的对称加密算法</h3><ul>
+<li><p>DES：数据加密标准(DES，Data Encryption Standard)是一种使用密钥加密的块密码，它基于使用56位密钥的对称算法，这个<br>算法因为包含一些机密设计元素，相对短的密钥长度以及被怀疑内含美国国家安全局(NSA)的后门而在开始时是有争议的，DES现在<br>已经不被视为一种安全的加密算法，主要因为它使用的56位密钥过短，导致容易被破解。为了提供实用所需的安全性，可以使用DES的<br>派生算法3DES来进行加密，虽然3DES也存在理论上的攻击方法。</p>
+</li>
+<li><p>AES：高级加密标准(英语：Advanced Encryption Standard，缩写：AES)，这个标准用来替代原先的DES，已经被多方分析<br>且广为全世界所使用，2006年，高级加密标准已然成为对称密钥加密中最流行的算法之一。AES的区块长度固定为128比特，密钥<br>长度则可以是128，192或256比特。</p>
+</li>
+<li><p>RC4：RC4加密算法是大名鼎鼎的RSA三人组中的头号人物Ronald Rivest在1987年设计的密钥长度可变的流加密算法簇。该算法<br>的速度可以达到DES加密的10倍左右，且具有很高级别的非线性。RC4起初是用于保护商业机密的。但是在1994年9月，它的算法被<br>发布在互联网上，也就不再有什么商业机密了。</p>
+</li>
+<li><p>是旅居瑞士中国青年学者来学嘉和著名密码专家J.Massey于1990年提出的。它在1990年正式公布并在以后得到增强。这种算法是<br>在DES算法的基础上发展出来的，类似于三重DES，和DES一样IDEA也是属于对称密钥算法。发展IDEA也是因为感到DES具有密钥太短<br>等缺点，已经过时。IDEA的密钥为128位，这么长的密钥在今后若干年内应该是安全的。</p>
+</li>
+</ul>
+<h3 id="3-非对称加密">3.非对称加密</h3><p>与对称加密算法不同，非对称加密算法需要两个密钥：公开密钥(publickey)和私有密钥(privatekey)；并且加密密钥和解密密钥<br>是成对出现的。非对称加密算法在加密和解密过程使用了不同的密钥，非对称加密也称为公钥加密，在密钥对中，其中一个密钥是对外公开的，<br>所有人都可以获取到，称为公钥，其中一个密钥是不公开的称为私钥。</p>
+<h3 id="4-非对称加密的特性">4.非对称加密的特性</h3><ul>
+<li><p>对于一个公钥，有且只有一个对应的私钥。</p>
+</li>
+<li><p>公钥是公开的，并且不能通过公钥反推出私钥。</p>
+</li>
+<li><p>通过私钥加密的密文只能通过公钥能解密，通过公钥加密的密文也只能通过私钥能解密。</p>
+</li>
+</ul>
+<blockquote>
+<p>通过公钥是极难推算出私钥的，只能通过穷举，所以只要密钥足够长，要想从公钥推算出私钥几乎不可能的。</p>
+</blockquote>
+<h3 id="5-非对称加密的主要用途">5.非对称加密的主要用途</h3><p>对信息保密，防止中间人攻击：将明文使用公钥加密，传输给接收者，这样确保信息只能被有私钥的拥有者解密，其他人无法获得明文信息，<br>因为没有私钥无法进行解密。该方法一般用于交换对称密钥。身份验证和防止信息篡改：私钥拥有者使用私钥加密一段授权明文，并将授权<br>明文和加密后的密文，以及公钥一并发送出来，接收方只需要通过公钥将密文解密后与授权明文对比是否一致，就可以判断明文在中途是否<br>被篡改过。此方法用于数字签名。</p>
+<h3 id="6-常见的非对称加密算法">6.常见的非对称加密算法</h3><ul>
+<li><p>RSA：1977年，三位数学家Rivest、Shamir 和 Adleman 设计了一种算法，可以实现非对称加密。这种算法用他们三个人的名字命名，叫做RSA算法。<br>从那时直到现在，RSA算法一直是最广为使用的”非对称加密算法”。毫不夸张地说，只要有计算机网络的地方，就有RSA算法。这种算法非常可靠，<br>密钥越长，它就越难破解。根据已经披露的文献，目前被破解的最长RSA密钥是768个二进制位。也就是说，长度超过768位的密钥，还无法破解(至少没人公开宣布)。<br>因此可以认为，1024位的RSA密钥基本安全，2048位的密钥极其安全。适用于数字签名和密钥交换。 该算法是目前应用最广泛的公钥加密算法，特别适用于通过 Internet 传送的数据。</p>
+</li>
+<li><p>DSA：数字签名算法 (Digital Signature Algorithm, DSA) 由美国国家安全署 (United States National Security Agency, NSA) 发明，<br>已作为数字签名的标准。在DSA数字签名和认证中，发送者使用自己的私钥对文件或消息进行签名，接受者收到消息后使用发送者的公钥来验证签名的真实性。DSA只是一种算法，<br>和RSA不同之处在于它不能用作加密和解密，也不能进行密钥交换，只用于签名，它比RSA要快很多。DSA 算法的安全性取决于自计算离散算法的困难。这种算法，不适用于数据加密，<br>仅适用于数字签名。</p>
+</li>
+<li><p>Diffie-Hellman：一种确保共享KEY安全穿越不安全网络的方法。Whitefield与Martin Hellman在1976年提出了一个奇妙的密钥交换协议，<br>称为Diffie-Hellman密钥交换协议/算法(Diffie-Hellman Key Exchange/Agreement Algorithm)。这个机制的巧妙在于需要安全通信的双方可以用这个方法确定对称密钥。<br>然后可以用这个密钥进行加密和解密。但是注意，这个密钥交换协议/算法只能用于密钥的交换，而不能进行消息的加密和解密。双方确定要用的密钥后，要使用其他对称密钥操作<br>加密算法实际加密和解密消息。该算法仅适用于密钥交换。</p>
+</li>
+<li><p>ECC：椭圆加密算法(ECC)是一种公钥加密体制，最初由Koblitz和Miller两人于1985年提出，与经典的RSA，DSA等公钥密码体制相比，<br>椭圆密码体制有以下优点：160位的椭圆密钥与1024位的RSA密钥安全性相同；在私钥的加密解密速度上，ECC算法比RSA、DSA速度更快；存储空间占用小；带宽要求低；<br>ECC算法的数学理论非常深奥和复杂，在工程应用中比较难于实现，但它的单位安全强度相对较高。</p>
+</li>
+</ul>
+<p>非对称加密算法可能是世界上最重要的算法，它是当今电子商务等领域的基石。非对称加密算法如此强大可靠，却有一个弊端，就是加解密比较耗时。<br>因此，在实际使用中，往往与对称加密和摘要算法结合使用。列如在实体之间交换对称密钥时，或者在签署一封邮件的散列时(数字签名)。</p>
+<blockquote>
+<p>散列是通过应用一种单向数学函数获得的一个定长结果，对于数据而言，叫做散列算法。</p>
+</blockquote>
+<h3 id="7-摘要算法">7.摘要算法</h3><p>摘要算法是一个神奇的算法，也称为散列或者散列值。是一种与基于密钥(对称密钥或公钥)的加密不同的数据转换类型。散列就是通过把一个叫做散列算法的单向数学函数应用于数据，将任意长度的一块数据转换为一个定长的、不可逆转的数字，其长度通常在128～256位之间。所产生的散列值的长度应足够长，因此使找到两块具有相同散列值的数据的机会很少。</p>
+<h3 id="8-摘要算法具有以下特性：">8.摘要算法具有以下特性：</h3><ul>
+<li><p>只要源文本不同，计算得到的结果，必然不同(或者说机会很少)。</p>
+</li>
+<li><p>无法从结果反推出源数据(那是当然的，不然就能量不守恒了)。</p>
+</li>
+</ul>
+<h3 id="9-常见的摘要算法：">9.常见的摘要算法：</h3><ul>
+<li><p>MD5：是RSA数据安全公司开发的一种单向散列算法，MD5被广泛使用，可以用来把不同长度的数据块进行暗码运算成一个固定位位的数值(通常是128位)。</p>
+</li>
+<li><p>SHA-1：与 DSA 公钥算法相似，安全散列算法1(SHA-1)也是由 NSA 设计的，并由 NIST 将其收录到 FIPS 中，作为散列数据的标准。它可产生一个 160 位的散列值。SHA-1 是流行的用于创建数字签名的单向散列算法。</p>
+</li>
+<li><p>MAC(Message Authentication Code)：消息认证代码，是一种使用密钥的单向函数，可以用它们在系统上或用户之间认证文件或消息，常见的是HMAC(用于消息认证的密钥散列算法)。</p>
+</li>
+<li><p>CRC(Cyclic Redundancy Check)：循环冗余校验码，CRC校验由于实现简单，检错能力强，被广泛使用在各种数据校验应用中。占用系统资源少，用软硬件均能实现，是进行数据传输差错检测地一种很好的手段(CRC 并不是严格意义上的散列算法，但它的作用与散列算法大致相同，所以归于此类)。</p>
+</li>
+</ul>
+<p>摘要算法用于对比信息源是否一致，因为只要源数据发生变化，得到的摘要必然不同。因为通常结果比源数据要短很多，所以称为“摘要”。</p>
+<p>应用场景，如发件人生成邮件的散列值并加密它，然后将它与邮件本身一起发送。而收件人同时解密邮件和散列值，并由接收到的邮件产生另外一个散列值，然后将两个散列值进行比较。如果两者相同，邮件极有可能在传输期间没有发生任何改变。</p>
+<h3 id="10-数字签名">10.数字签名</h3><p>数字签名就是对非对称加密和摘要算法的一种应用，能够确保信息在发布后不会被篡改(摘要算法特性)，保证数据的完整性和可信性；同时也可以防止数据被他人伪造(非对称加密算法特性)；列如，我们有一段授权文本需要发布时，为了防止中途篡改发布的内容，保证发布文本的完整性，以及文本是由指定的发布者发布的。那么，可以通过摘要算法得到发布内容的摘要，得到摘要之后，发布者使用私钥加密得到密文(签名)，这时候将源文本、密文(签名)以及公钥一起发布出去即可。</p>
+<p>验证过程为：首先验证公钥是否是发布者的公钥，然后用公钥对密文进行解密，得到摘要，使用发布者对文本同样的摘要算法得到摘要文本，比对摘要是否一致即可确认信息是否被篡改或者是指定发布者发布的。</p>
+<h1 id="数字证书">数字证书</h1><h3 id="1-现实生活中的证书">1.现实生活中的证书</h3><p>在现实生活中，证书顾名思义，就是权限机构颁发的证明。比如英语6级证书，就是教育部门颁发给通过了6级考核的个人的证明，证明这个人的英语能力。我们来看一下这个证书的组成：</p>
+<ul>
+<li><p>被证明人：老王</p>
+</li>
+<li><p>内容：通过了英语六级</p>
+</li>
+<li><p>盖章：教育部门的公章或钢印</p>
+</li>
+</ul>
+<p>当老王用这张证书找工作时，用人单位会通过查看证书的各项内容(尤其是公章)，来验证证书的合法性和老王的能力。在现实生活中经常有假的6级证书，这些假证书最重要的就是有一个假公章。现实生活中使用法律法规来约束私刻假公章的行为，但是用人单位可能不能十分准确的判断公章是真是假。而数字签字可以来解决该类问题。</p>
+<h2 id="2-数字证书">2.数字证书</h2><p>数字证书就是通过数字签名实现的数字化的证书，在现实生活中公章可以被伪造，但是在计算数字世界中，数字签名是没办法被伪造的，比如上述证书中，在一个证书文件中写明了证书内容，颁发证书时，教育部门用他们的私钥对文件的摘要信息进行签名，将签名和证书文件一起发布，这样就能确保该证书无法被伪造。验证证书是否合法时，首先用教育部门的公钥(公钥是公开的谁都可以获取到)对签名进行解密得到一个摘要信息，使用教育部门同样的摘要算法得到证书的另一个摘要信息，对比两个摘要信息是否一致就能确定该证书是否合法。在一般的证书组成中部分中，还加入了一些其他信息，比如证书的有效期。</p>
+<p>数字证书也有很多的签发机构，不同的签发机构签发的证书，用途也是不一样的，比如iOS开发中，使用到的ipa文件签名证书，需要到苹果申请。而在Web访问中为了防止Web内容在网络中安全传输，需要用到的SSL证书则需要向几家公认的机构签发。这些签发机构统称为CA(Certificate Authority)。</p>
+<p>Web访问相关的证书可以向国际公认的几个机构：</p>
+<ul>
+<li><p>WebTrust</p>
+</li>
+<li><p>GlobalSign</p>
+</li>
+<li><p>GTE</p>
+</li>
+<li><p>Nortel</p>
+</li>
+<li><p>Verisign</p>
+</li>
+</ul>
+<h3 id="3-数字证书的验证">3.数字证书的验证</h3><p>申请证书是为了验证，比如Web应用相关的SSL证书验证方是浏览器，iOS各种证书的验证方是iOS设备。因为数字证书是基于数字签名的，所有数字证书的合法性验证就是验证数字证书的签名是否正确，对于签名的验证在是需要签发机构的公钥才能验证；</p>
+<p>对于iOS开发证书来说，申请完签名证书后，还需要安装苹果的公钥证书(XCode安装后会自动安装)，这样才能确保我们申请的证书是可以被验证通过的(合法的)，可用来进行ipa文件签名的。对于Web相关的证书签名的验证，则是由浏览器来验证，对于国际公认的几个证书签发机构浏览器会内置其公钥证书，用来验证数字证书的可信性。</p>
+<p>当数字证书通过验证后，便可以用数字证书做对应的事情，iOS开发证书可以用来对APP进行签名，SSL证书可以用来做Web内容加密处理相关的事情。所以有了这些证书之后，能保证在数据的传输过程中，数据是不会被篡改的，并且信息来源也是不能不修改的，从而确保信息安全。</p>
+<blockquote>
+<p>对于iOS，iOS系统已经将这个验证过程固化在系统中了，除非越狱，否则无法绕过</p>
+</blockquote>
+<h3 id="4-数字证书的授权链">4.数字证书的授权链</h3><p>数字证书还包含一个授权链信息，举个例子：如果你要申请休假1周，需要你的上司审批，你的上司需要他的上司同意，最终需要大老板同意，那么这一层层的授权，形成了一个授权链，大老板是授权链的根(root)，中间这些环节分别是被更接近root的人授权的。</p>
+<p>比如苹果开发者的APP签名证书，该证书可以用来对APP进行签名，该证书实际上是由苹果的Worldwide Developer Relations Certificate Authority(WDRCA)授权签名的，而它是由Apple Certificate Authority授权签名的。在这个关系链中苹果的CA是根。 苹果CA根证书默认是内置在苹果系统中的，所以WDRCA的可信性可以由苹果内置的CA根证书来验证其可信性。</p>
+<p>Web相关的SSL证书顶部CA根，则就是上述提到的几家公认的签发机构，当我们需要Web做SSL的证书时，便可以向上述机构申请，通常向根机构申请费用都会比较高，也可以向一些二级授权机构进行申请，选择根机构证书签发的好处就是目前大多数的浏览器都会预装内置了这些权威CA的公钥证书，这样，在使用这些权威CA签发过的证书的时候，浏览器一般不会报风险提示。</p>
+<h1 id="总结">总结</h1><p>数字证书签名的基础是非对称加密算法，利用了非对称加密的身份验证和防止信息篡改的特性来实现的，在一些其他方面比如HTTPS中密钥交换用的就是非对称加密的保密特性来实现的，在非对称加密算法中RSA应用最广。非对称加密虽好，但却有一个弊端，就是加解密比较耗时，所以一般都是配合对称加密一起使用。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/数字证书/" rel="tag"># 数字证书</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/31/course-note-3/" rel="next" title="信息系统管理与安全(3)">
+                <i class="fa fa-chevron-left"></i> 信息系统管理与安全(3)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/14/团队中的git实践/" rel="prev" title="团队中的git实践">
+                团队中的git实践 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://o7bp9e1ec.bkt.clouddn.com/1485173143816"
+               alt="Ji Xiang" />
+          <p class="site-author-name" itemprop="name">Ji Xiang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#加密算法"><span class="nav-number">1.</span> <span class="nav-text">加密算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-对称加密"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-常见的对称加密算法"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.常见的对称加密算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-非对称加密"><span class="nav-number">1.0.3.</span> <span class="nav-text">3.非对称加密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-非对称加密的特性"><span class="nav-number">1.0.4.</span> <span class="nav-text">4.非对称加密的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-非对称加密的主要用途"><span class="nav-number">1.0.5.</span> <span class="nav-text">5.非对称加密的主要用途</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-常见的非对称加密算法"><span class="nav-number">1.0.6.</span> <span class="nav-text">6.常见的非对称加密算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-摘要算法"><span class="nav-number">1.0.7.</span> <span class="nav-text">7.摘要算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-摘要算法具有以下特性："><span class="nav-number">1.0.8.</span> <span class="nav-text">8.摘要算法具有以下特性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-常见的摘要算法："><span class="nav-number">1.0.9.</span> <span class="nav-text">9.常见的摘要算法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-数字签名"><span class="nav-number">1.0.10.</span> <span class="nav-text">10.数字签名</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数字证书"><span class="nav-number">2.</span> <span class="nav-text">数字证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-现实生活中的证书"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.现实生活中的证书</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-数字证书"><span class="nav-number">2.1.</span> <span class="nav-text">2.数字证书</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-数字证书的验证"><span class="nav-number">2.1.1.</span> <span class="nav-text">3.数字证书的验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-数字证书的授权链"><span class="nav-number">2.1.2.</span> <span class="nav-text">4.数字证书的授权链</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ji Xiang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Javascript 包含了少量用在标准类型上的标准方法。Arrayarray.concat(item…)concat方法返回一个新数组，它包含array的浅复制，，并将一个或多个参数 item 附加在其后。如果参数是一个数组，那么它的每个元素会被分别添加。1234var a = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];var b = [&apos;x&apos;, &apos;y&apos;, &apos;z&apos;];var c = a.concat(b,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript-methods">
+<meta property="og:url" content="http://yoursite.com/2017/02/12/javascript-methods/index.html">
+<meta property="og:site_name" content="Ji Xiang's blog">
+<meta property="og:description" content="Javascript 包含了少量用在标准类型上的标准方法。Arrayarray.concat(item…)concat方法返回一个新数组，它包含array的浅复制，，并将一个或多个参数 item 附加在其后。如果参数是一个数组，那么它的每个元素会被分别添加。1234var a = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];var b = [&apos;x&apos;, &apos;y&apos;, &apos;z&apos;];var c = a.concat(b,">
+<meta property="og:updated_time" content="2017-02-15T14:04:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript-methods">
+<meta name="twitter:description" content="Javascript 包含了少量用在标准类型上的标准方法。Arrayarray.concat(item…)concat方法返回一个新数组，它包含array的浅复制，，并将一个或多个参数 item 附加在其后。如果参数是一个数组，那么它的每个元素会被分别添加。1234var a = [&apos;a&apos;, &apos;b&apos;, &apos;c&apos;];var b = [&apos;x&apos;, &apos;y&apos;, &apos;z&apos;];var c = a.concat(b,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/12/javascript-methods/"/>
+
+
+
+
+
+  <title> javascript-methods | Ji Xiang's blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Ji Xiang's blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">Walk step by step and learn everyday</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/12/javascript-methods/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Ji Xiang">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://o7bp9e1ec.bkt.clouddn.com/1485173143816">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Ji Xiang's blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Ji Xiang's blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript-methods
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-12T21:22:11+08:00">
+                2017-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Javascript_包含了少量用在标准类型上的标准方法。">Javascript 包含了少量用在标准类型上的标准方法。</h2><h2 id="Array">Array</h2><h3 id="array-concat(item…)">array.concat(item…)</h3><p>concat方法返回一个新数组，它包含array的浅复制，，并将一个或多个参数 item 附加在其后。如果参数是一个数组，那么它的每个元素会被分别添加。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">var</span> b = [<span class="string">'x'</span>, <span class="string">'y'</span>, <span class="string">'z'</span>];</span><br><span class="line"><span class="keyword">var</span> c = a.concat(b, <span class="literal">true</span>);</span><br><span class="line"><span class="comment">// c 是 ['a', 'b', 'c', 'x', 'y', 'z', true]</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="array-join(separator)">array.join(separator)</h3><p>join方法把一个 array 构造成一个字符串。它将 array 中的每个元素构造成一个字符串，并且用一个 separator 作为分隔符把它们连接在一起。默认的 separator 是 ‘,’。为了实现无间隔的连接，我们可以使用空字符串作为 separator。<br>如果你想把大量的片段组装成一个字符串，把这些片段放到一个数组中并用 join 方法连接它们通常比用 + 元素运算符连接这些片段要快。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">var</span> b = a.join(<span class="string">''</span>);</span><br><span class="line"><span class="comment">// b 是 'abc';</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="array-pop()">array.pop()</h3><p>pop 和 push 方法使数组 array 像堆栈一样工作。pop 移除 array 中的最后一个元素并返回该元素。如果 array 是空的，它会返回 undefined。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">var</span> b = a.pop();</span><br><span class="line"><span class="comment">// a 是 ['a', 'b'], b 是 'c'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="array-push(item…)">array.push(item…)</h3><p>push 方法将一个或者多个参数 item 附加到一个数组的尾部。不像 concat 方法那样，它会修改数组 array，如果参数 item 是一个数组，它会将参数数组作为整个添加到数组中。它返回这个数组 array 的新长度值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];&#10;var b = [&#39;x&#39;, &#39;y&#39;, &#39;z&#39;];&#10;var c = a.push(b, true);&#10;// a &#26159;[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, [&#39;x&#39;, &#39;y&#39;, &#39;z&#39;], true], c &#26159; 5</span><br></pre></td></tr></table></figure></p>
+<h3 id="array-reverse()">array.reverse()</h3><p>reverse 方法反转数组 array 中元素的顺序。它返回当前的 array<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">var</span> b = a.reverse();</span><br><span class="line"><span class="comment">// a 和 b 都是 ['c', 'b', 'a']</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="array-shift()">array.shift()</h3><p>shift 方法移除数组 array 中的第一个元素。如果这个数组是空的，它会返回 undefined。shift 通常比 pop 慢得多。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">var</span> b = a.shift();</span><br><span class="line"><span class="comment">// a 是 ['b', 'c'], b 是 'a'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="array-slice(start,_end)">array.slice(start, end)</h3><p>slice 对 array 中的一段做浅复制。第一个被复制的元素是 array[start]，它将一直复制到 array[end]为止。end 参数是可选的，并且默认值是该数组的长度。如果两个参数中的任何一个是负数，array.length 将和它们相加起来试图使它们成为非负数。如果 start 大于等于 array.length，得到的结果将是一个新的空数组。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">var</span> b = a.slice(<span class="number">0</span>, <span class="number">1</span>); <span class="comment">// b 是 'a'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="array-sort()">array.sort()</h3><p>sort 方法对 array 进行适当的排序，它不能正确给一组数字排序，因为该方法假定排序的元素是字符串，所以会把数字转换为字符串，从而数字数组排序会得到一个“错误”的结果。但可以使用自己的比较函数。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">10</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span>];</span><br><span class="line"><span class="comment">// 从小到大排序</span></span><br><span class="line">a.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a - b;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// a 是 [2, 4, 7, 10]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 从大到小排序</span></span><br><span class="line">a.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b - a;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// a 是 [10, 7, 4, 2]</span></span><br></pre></td></tr></table></figure></p>
+<p>上面的方法只能给数字排序，如果给任意简单值数组排序，则必须做更多的工作<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="string">'aa'</span>, <span class="string">'bb'</span>, <span class="string">'d'</span>, <span class="number">23</span>, <span class="number">12</span>, <span class="number">1</span>, <span class="number">45</span>];</span><br><span class="line">a.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a === b) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> a === <span class="keyword">typeof</span> b) &#123;</span><br><span class="line">        <span class="keyword">return</span> a &lt; b ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">typeof</span> a &lt; <span class="keyword">typeof</span> b ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// a 是 [1, 12, 23, 45, "aa", "bb", "d"]</span></span><br></pre></td></tr></table></figure></p>
+<p>给对象数组排序<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// by 函数接受一个成员名字符串作为参数</span></span><br><span class="line"><span class="comment">// 并返回一个可以用来对包含该成员的对象数组进行排序的比较函数</span></span><br><span class="line"><span class="keyword">var</span> by = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">o, p</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a, b;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> o === <span class="string">'object'</span> &amp;&amp; <span class="keyword">typeof</span> p === <span class="string">'object'</span> &amp;&amp; o &amp;&amp; p) &#123;</span><br><span class="line">            a = o[name];</span><br><span class="line">            b = p[name];</span><br><span class="line">            <span class="keyword">if</span>(a === b) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> a === <span class="keyword">typeof</span> b) &#123;</span><br><span class="line">                <span class="keyword">return</span> a &lt; b ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">typeof</span> a &lt; <span class="keyword">typeof</span> b ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> &#123;</span><br><span class="line">                name: <span class="string">'Error'</span>,</span><br><span class="line">                message: <span class="string">'Expected an object when sorting by '</span> + name</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> s = [</span><br><span class="line">    &#123;first: <span class="string">'Joe'</span>, last: <span class="string">'Besser'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Moe'</span>, last: <span class="string">'Howward'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Joe'</span>, last: <span class="string">'DeRita'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Shemp'</span>, last: <span class="string">'Howward'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Larry'</span>, last: <span class="string">'Fine'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Currly'</span>, last: <span class="string">'Howard'</span>&#125;</span><br><span class="line">];</span><br><span class="line">s.sort(by(<span class="string">'first'</span>));</span><br><span class="line"><span class="comment">/* s 是 </span><br><span class="line">[</span><br><span class="line">    &#123;first: 'Currly', last: 'Howard'&#125;</span><br><span class="line">    &#123;first: 'Joe', last: 'Besser'&#125;,</span><br><span class="line">    &#123;first: 'Joe', last: 'DeRita'&#125;,</span><br><span class="line">    &#123;first: 'Larry', last: 'Fine'&#125;,</span><br><span class="line">    &#123;first: 'Moe', last: 'Howward'&#125;,</span><br><span class="line">    &#123;first: 'Shemp', last: 'Howward'&#125;,</span><br><span class="line">];</span><br><span class="line">*／</span></span><br></pre></td></tr></table></figure></p>
+<p>基于多个键值排序，可以修改 by 函数，让其可以接受第二个参数，当主要的键值产生一个匹配的时候，另一个 compare 方法将被调用以决出高下。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// by 函数接受一个成员名字符串和一个可选的次要比较函数作为参数，</span></span><br><span class="line"><span class="comment">// 并返回一个可以用来对包含该成员的对象数组进行排序的比较函数。</span></span><br><span class="line"><span class="comment">// 当 o[name] === p[name] 时，次要比较函数被用来决出高下</span></span><br><span class="line"><span class="keyword">var</span> by = <span class="function"><span class="keyword">function</span>(<span class="params">name, minor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">o, p</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a, b;</span><br><span class="line">        <span class="keyword">if</span>(o &amp;&amp; p &amp;&amp; <span class="keyword">typeof</span> o === <span class="string">'object'</span> &amp;&amp; <span class="keyword">typeof</span> p === <span class="string">'object'</span>) &#123;</span><br><span class="line">            a = o[name];</span><br><span class="line">            b = p[name];</span><br><span class="line">            <span class="keyword">if</span>(a === b) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">typeof</span> minor === <span class="string">'function'</span> ? minor(o, p) : <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">typeof</span> a === <span class="keyword">typeof</span> b) &#123;</span><br><span class="line">                <span class="keyword">return</span> a &lt; b ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">typeof</span> a &lt; <span class="keyword">typeof</span> b ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> &#123;</span><br><span class="line">                name: <span class="string">'Error'</span>,</span><br><span class="line">                message: <span class="string">'Expected an object when sorting by '</span> + name</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> s = [</span><br><span class="line">    &#123;first: <span class="string">'Joe'</span>, last: <span class="string">'Besser'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Moe'</span>, last: <span class="string">'Howward'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Joe'</span>, last: <span class="string">'DeRita'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Shemp'</span>, last: <span class="string">'Howward'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Larry'</span>, last: <span class="string">'Fine'</span>&#125;,</span><br><span class="line">    &#123;first: <span class="string">'Currly'</span>, last: <span class="string">'Howard'</span>&#125;</span><br><span class="line">];</span><br><span class="line">s.sort(by(<span class="string">'last'</span>, by(<span class="string">'first'</span>)));</span><br><span class="line"><span class="comment">/* s 是 </span><br><span class="line">[</span><br><span class="line">    &#123;first: 'Joe', last: 'Besser'&#125;,</span><br><span class="line">    &#123;first: 'Joe', last: 'DeRita'&#125;,</span><br><span class="line">    &#123;first: 'Larry', last: 'Fine'&#125;,</span><br><span class="line">    &#123;first: 'Currly', last: 'Howard'&#125;</span><br><span class="line">    &#123;first: 'Moe', last: 'Howward'&#125;,</span><br><span class="line">    &#123;first: 'Shemp', last: 'Howward'&#125;,</span><br><span class="line">];</span><br><span class="line">*／</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="array-splice(start,_deleteCount,_item…)">array.splice(start, deleteCount, item…)</h3><p>splice 方法从 array 中移除 1 个或多个元素，并用新的 item 替换它们。参数 start 是从数组 array 中移除元素的开始位置。参数 deleteCount 是要移除元素的个数。如果有额外的参数那些 item 都将插入到所移除元素的位置上它返回一个包含被移除元素的数组。<br>splice 最主要的用处是从一个数组中删除元素。千万不要与 slice 混淆，slice 主要的用处是对数组的一段做浅复制。</p>
+<h3 id="array-unshift(item…)">array.unshift(item…)</h3><p>unshift 方法像 push 方法一样用于将元素添加到数组中，但它是把元素插入到 array 的开始部分而不是尾部。它返回 array 的新的长度值。</p>
+<h2 id="Function">Function</h2><p>未完。。。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/04/动态规划/" rel="next" title="动态规划">
+                <i class="fa fa-chevron-left"></i> 动态规划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://o7bp9e1ec.bkt.clouddn.com/1485173143816"
+               alt="Ji Xiang" />
+          <p class="site-author-name" itemprop="name">Ji Xiang</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript_包含了少量用在标准类型上的标准方法。"><span class="nav-number">1.</span> <span class="nav-text">Javascript 包含了少量用在标准类型上的标准方法。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">2.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#array-concat(item…)"><span class="nav-number">2.1.</span> <span class="nav-text">array.concat(item…)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-join(separator)"><span class="nav-number">2.2.</span> <span class="nav-text">array.join(separator)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-pop()"><span class="nav-number">2.3.</span> <span class="nav-text">array.pop()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-push(item…)"><span class="nav-number">2.4.</span> <span class="nav-text">array.push(item…)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-reverse()"><span class="nav-number">2.5.</span> <span class="nav-text">array.reverse()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-shift()"><span class="nav-number">2.6.</span> <span class="nav-text">array.shift()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-slice(start,_end)"><span class="nav-number">2.7.</span> <span class="nav-text">array.slice(start, end)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-sort()"><span class="nav-number">2.8.</span> <span class="nav-text">array.sort()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-splice(start,_deleteCount,_item…)"><span class="nav-number">2.9.</span> <span class="nav-text">array.splice(start, deleteCount, item…)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#array-unshift(item…)"><span class="nav-number">2.10.</span> <span class="nav-text">array.unshift(item…)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function"><span class="nav-number">3.</span> <span class="nav-text">Function</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ji Xiang</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

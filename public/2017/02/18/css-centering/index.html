@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,19 +84,13 @@
 
 
 
-<meta name="description" content="JavaScript Closure学习JavaScript，不能不知道闭包(closure)的概念和作用。闭包是JavaScript中重要的一个概念，对于初学者来讲，闭包很难理解和运用。但只有理解了闭包的基本概念，才能正确的使用它；同样的，只有配合正确的实践，我们才有更加深刻的理解。因此，这片文章借鉴了很多前人的总结和经验，只为更好的理解闭包。   
-##闭包的概念对于码农来说，学习一门新技术，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript学习笔记(3)">
-<meta property="og:url" content="http://yoursite.com/2016/03/27/JavaScript学习笔记-3/index.html">
+<meta property="og:title" content="css-centering">
+<meta property="og:url" content="http://yoursite.com/2017/02/18/css-centering/index.html">
 <meta property="og:site_name" content="Ji Xiang's blog">
-<meta property="og:description" content="JavaScript Closure学习JavaScript，不能不知道闭包(closure)的概念和作用。闭包是JavaScript中重要的一个概念，对于初学者来讲，闭包很难理解和运用。但只有理解了闭包的基本概念，才能正确的使用它；同样的，只有配合正确的实践，我们才有更加深刻的理解。因此，这片文章借鉴了很多前人的总结和经验，只为更好的理解闭包。   
-##闭包的概念对于码农来说，学习一门新技术，">
 <meta property="og:updated_time" content="2017-03-04T03:53:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript学习笔记(3)">
-<meta name="twitter:description" content="JavaScript Closure学习JavaScript，不能不知道闭包(closure)的概念和作用。闭包是JavaScript中重要的一个概念，对于初学者来讲，闭包很难理解和运用。但只有理解了闭包的基本概念，才能正确的使用它；同样的，只有配合正确的实践，我们才有更加深刻的理解。因此，这片文章借鉴了很多前人的总结和经验，只为更好的理解闭包。   
-##闭包的概念对于码农来说，学习一门新技术，">
+<meta name="twitter:title" content="css-centering">
 
 
 
@@ -124,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/03/27/JavaScript学习笔记-3/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/18/css-centering/"/>
 
 
 
 
 
-  <title> JavaScript学习笔记(3) | Ji Xiang's blog </title>
+  <title> css-centering | Ji Xiang's blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -243,7 +237,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/27/JavaScript学习笔记-3/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/18/css-centering/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Ji Xiang">
@@ -267,7 +261,7 @@
             
             
               
-                JavaScript学习笔记(3)
+                css-centering
               
             
           </h1>
@@ -282,8 +276,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-27T16:47:19+08:00">
-                2016-03-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-18T20:26:34+08:00">
+                2017-02-18
               </time>
             
 
@@ -318,23 +312,7 @@
       
 
       
-        <h1 id="JavaScript-Closure"><a href="#JavaScript-Closure" class="headerlink" title="JavaScript Closure"></a>JavaScript Closure</h1><p>学习JavaScript，不能不知道<b>闭包(closure)</b>的概念和作用。闭包是JavaScript中重要的一个概念，对于初学者来讲，闭包很难理解和运用。但只有理解了闭包的基本概念，才能正确的使用它；同样的，只有配合正确的实践，我们才有更加深刻的理解。因此，这片文章借鉴了很多前人的总结和经验，只为更好的理解闭包。   </p>
-<p>##闭包的概念<br>对于码农来说，学习一门新技术，除了看官方API和相关文档，示例代码的对我们的帮助可能更大，因为代码的运行结果更加直观，能加深我们的理解。下面贴出大牛的代码，号称世上最简单的闭包：   </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Hello closure!'</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> B;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> c = A();</div><div class="line"><span class="comment">// c(); Hello closure!</span></div></pre></td></tr></table></figure>
-<p>确实，这个示例代码真的不能再简单了。这段代码“翻译”后可以表示为：   </p>
-<ol>
-<li>定义了一个函数A   </li>
-<li>在A中定义了内部函数B   </li>
-<li>在A中返回B（确切的讲，在A中返回B的引用）   </li>
-<li>执行A()，把A的返回值-函数B()的引用复制给变量c   </li>
-<li>执行 函数B()，输出结果</li>
-</ol>
-<p>根据上述例子，闭包可定义为：<br><em>当一个内部函数被其外部函数之外的变量引用时，就形成了一个闭包。</em></p>
-<p>##闭包的作用<br>在了解闭包的作用之前，我们先了解一下JavaScript中的垃圾回收(GC)机制：<em>在JavaScript中，如果一个对象不再被引用，那么这个对象就会被GC回收，否则这个对象会一直保存在内存中。</em><br>在上述例子中，B定义在A中，因此B依赖于A，而外部变量c获得了内部函数B的引用，也就是说，A被间接引用了，所以A不会被GC回收，而是一直保持上下文，在同一个引用调用结束前，会一直保存在内存中，直到调用结束。<br>示例2：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">A</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> count = <span class="number">0</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">B</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    count++;</div><div class="line">    <span class="built_in">console</span>.log(count);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> B;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> c = A();</div><div class="line">c();<span class="comment">//1</span></div><div class="line">c();<span class="comment">//2</span></div><div class="line">c();<span class="comment">//3</span></div></pre></td></tr></table></figure>
-<p>count是A中的一个变量，它的值在B中被改变，函数B每执行一次，count的值在原来的基础上累加1，A被变量c引用，不会被GC，因此，A中的count一直保存在内存中，c每执行一次，由于保留了上下文，count的值会在原来的基础上增加1。<br>这就是闭包的作用，有时候我们需要一个模块中定义这样一个变量：希望这个变量一直保存在内存中，但又不会“污染”全局的变量，这个时候，我们就可以用闭包来定义这个模块。</p>
-<p>###结语<br>上面的例子只是最简陋的写法，实际中不会这么写。这里只是为了加深理解。当然，如果要全面理解闭包，仅凭上面的文字和代码是远远不够的。在项目中不妨试着使用闭包，用的多了自然会有独到的理解。</p>
-
+        
       
     </div>
 
@@ -355,19 +333,13 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/23/JavaScript学习笔记-2/" rel="next" title="JavaScript学习笔记(2)">
-                <i class="fa fa-chevron-left"></i> JavaScript学习笔记(2)
+              <a href="/2017/02/12/javascript-methods/" rel="next" title="javascript-methods">
+                <i class="fa fa-chevron-left"></i> javascript-methods
               </a>
             
           </div>
@@ -376,8 +348,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/28/course-note-2/" rel="prev" title="信息系统管理与安全(2)">
-                信息系统管理与安全(2) <i class="fa fa-chevron-right"></i>
+              <a href="/2017/03/04/svg-viewport-viewbox/" rel="prev" title="svg_viewport&viewbox">
+                svg_viewport&viewbox <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -425,17 +397,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://o7bp9e1ec.bkt.clouddn.com/1485173143816"
@@ -484,22 +447,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-Closure"><span class="nav-number">1.</span> <span class="nav-text">JavaScript Closure</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>

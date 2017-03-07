@@ -134,15 +134,73 @@ arr.reduce(callback, [initialValue]);
 
 | callback | 作用于数组中每个元素的方法，接受四个参数 |
 | --- | --- |
-| accumulator | 在回调函数最后一次调用中返回的值，如果给了initialValue就是initialValue的值 |
+| accumulator | 作为每次迭代的初始值，同时也作为上一次迭代的结果值，如果是第一次执行callback，并且给了initialValue，则为initialValue的值，否则为数组第一个元素的值 |
 | currentValue | 数组中当前被处理的元素 |
 | currentIndex | 当前元素的索引，如果给了initialValue，索引从0开始，否则从1开始 |
 | array | reduce的数组 |
 | initialValue | (可选)callback第一次调用时使用的第一个值，即初始值 |
 | 返回值 | 返回最终的结果 |
+
 **描述**
 reduce()执行一个接受四个参数的回调函数。回调函数第一次调用时，如果有initialValue，accumulator的值为initialValue，currentValue的值为数组第一个元素的值。如果没有设置initialValue，accumulator的值为数组第一个元素的值，currentValue的值为数组第二个元素的值。   
 **Note** 如果没有提供initialValue，reduce将会从索引1开始执行callback，略过第一个索引。如果提供了，从索引0开始。   
 
 如果数组是空的，并且没有提供initialValue，将会抛出**TyoeError**。如果数组只有一个元素并且没有提供initialValue，或者数组是空的但提供了initialValue，reduce将会返回这一个孤独的值而不调用callback。   
 
+**Examples**   
+```javascript
+// 数组扁平化
+var flattened = [[0, 1], [2, 3], [4, 5]].reduce(
+  function(a, b) {
+    return a.concat(b);
+  },
+  []
+);
+// flattened is [0, 1, 2, 3, 4, 5]
+```
+```javascript
+// 统计数组中的值的种类
+var names = ['Alice', 'Bob', 'Tiff', 'Bruce', 'Alice'];
+
+var countedNames = names.reduce(function (allNames, name) { 
+  if (name in allNames) {
+    allNames[name]++;
+  }
+  else {
+    allNames[name] = 1;
+  }
+  return allNames;
+}, {});
+// countedNames is:
+// { 'Alice': 2, 'Bob': 1, 'Tiff': 1, 'Bruce': 1 }
+```
+```javascript
+// 取出数组中的所有对象里的某一个属性的值，并返回一个包含这些值的新数组
+// friends - an array of objects 
+// where object field "books" - list of favorite books 
+var friends = [{
+  name: 'Anna',
+  books: ['Bible', 'Harry Potter'],
+  age: 21
+}, {
+  name: 'Bob',
+  books: ['War and peace', 'Romeo and Juliet'],
+  age: 26
+}, {
+  name: 'Alice',
+  books: ['The Lord of the Rings', 'The Shining'],
+  age: 18
+}];
+
+// allbooks - list which will contain all friends books +  
+// additional list contained in initialValue
+var allbooks = friends.reduce(function(prev, curr) {
+  return [...prev, ...curr.books];
+}, ['Alphabet']);
+
+// allbooks = [
+//   'Alphabet', 'Bible', 'Harry Potter', 'War and peace', 
+//   'Romeo and Juliet', 'The Lord of the Rings',
+//   'The Shining'
+// ]
+```

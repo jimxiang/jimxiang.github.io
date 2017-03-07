@@ -2,11 +2,11 @@ title: JavaScript学习笔记(1)
 date: 2016-03-19 14:30:51
 tags: JavaScript
 ---
-##JavaScript中的apply(), call()和arguments对象   
+## JavaScript中的apply(), call()和arguments对象   
 >学习JavaScript，应该掌握函数式编程的特点和方法，为了做到这一点，详细理解函数调用和函数原型是非常有必要的。
 打开浏览器，按F12打开浏览器控制台，选择console，让我们在console控制台里编写一些javascript代码来深入了解关于函数的一些知识。
 
-###函数原型   
+### 函数原型   
 输入：
 
 ```javascript
@@ -50,7 +50,7 @@ Object { this: Window, a: "this", b: "is", c: "cool" }
 
 >我们注意到，如果我们不输入第2、3个参数，浏览器将显示undefined。此外，我们注意到这个函数默认的上下文是全局对象Window。
 
-###使用Function.prototype.call   
+### 使用Function.prototype.call   
 调用call函数时，需要把上下文变量this作为第一个输入的参数，然后传进其他参数。
 *syntax:*
 ```javascript
@@ -64,7 +64,7 @@ test('this', 'is', 'cool');
 test.call(Window, 'this', 'is', 'cool');
 ```
 
-###使用Function.prototype.apply   
+### 使用Function.prototype.apply   
 函数apply比call更实用一些，和call类似，apply的调用方式也是把变量this设置为输入参数序列中的第一个参数的值，但输入参数序列的第二个参数也是最后一个，以数组（或者数组对象）的方式传入。
 *Syntax:*
 
@@ -95,7 +95,7 @@ Math.max.apply(null, numbers);
 //=> 8
 ```
 
-###apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。   
+### apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。   
 每个函数表达式在它的作用域中都有一个特殊的、可使用的局部变量：arguments。为了研究它的属性，让我们创建另一个test函数:
 
 ```javascript

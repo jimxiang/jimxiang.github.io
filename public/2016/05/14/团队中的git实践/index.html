@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/05/14/团队中的git实践/index.html">
 <meta property="og:site_name" content="Ji Xiang's blog">
 <meta property="og:description" content="为了获得软件质量和开发效率的双重收益，软件项目开发早已不再是一个人的事情了，而是一个团队(team)的事情。不但如此，现今的软件开发规模越来越大，所涉及的技术门类也越来越复杂，一个人难以独挑大梁，同时，一个人也难以在短周期内完成复杂项目。团队的意义不仅在于提高开发效率，更能保证开发质量，一人负责一块开发内容就可以用充足的精力和热情使这块内容做的更加完美。说到团队开发，总是离不开项目管理和版本控制工">
-<meta property="og:updated_time" content="2017-03-04T03:53:45.000Z">
+<meta property="og:updated_time" content="2017-03-07T06:08:29.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="团队中的git实践">
 <meta name="twitter:description" content="为了获得软件质量和开发效率的双重收益，软件项目开发早已不再是一个人的事情了，而是一个团队(team)的事情。不但如此，现今的软件开发规模越来越大，所涉及的技术门类也越来越复杂，一个人难以独挑大梁，同时，一个人也难以在短周期内完成复杂项目。团队的意义不仅在于提高开发效率，更能保证开发质量，一人负责一块开发内容就可以用充足的精力和热情使这块内容做的更加完美。说到团队开发，总是离不开项目管理和版本控制工">
@@ -316,8 +316,8 @@
 
       
         <p>为了获得软件质量和开发效率的双重收益，软件项目开发早已不再是一个人的事情了，而是一个团队(team)的事情。不但如此，现今的软件开发规模越来越大，所涉及的技术门类也越来越复杂，一个人难以独挑大梁，同时，一个人也难以在短周期内完成复杂项目。团队的意义不仅在于提高开发效率，更能保证开发质量，一人负责一块开发内容就可以用充足的精力和热情使这块内容做的更加完美。<br>说到团队开发，总是离不开项目管理和版本控制工具，这里我们将会讨论版本控制工具——git在团队中正确实践的姿势。<br>Git/Github是任何一个非小白程序员都知道或使用的工具/网站，随着软件开发学龄的深入，我自己的体会是越来越离不开这个东西了。一个人用git可以用得随心所欲，但团队中就是另外一回事了。一个人的项目，代码怎么改、怎么提交都不会有冲突，这样也会养成一些不良习惯，把这些习惯带到团队开发中，轻则让队友讨厌，重则酿成大祸（这不是危言耸听）。   </p>
-<p>###1.习惯养成<br>如果一个团队在使用git时没有一些规范，那将是一场难以醒来的噩梦！然而，规范固然重要，但更重要的是个人素质，在使用git时需要自己养成良好的习惯。</p>
-<p>###2.提交<br>Commit Message格式   </p>
+<h3 id="1-习惯养成"><a href="#1-习惯养成" class="headerlink" title="1.习惯养成"></a>1.习惯养成</h3><p>如果一个团队在使用git时没有一些规范，那将是一场难以醒来的噩梦！然而，规范固然重要，但更重要的是个人素质，在使用git时需要自己养成良好的习惯。</p>
+<h3 id="2-提交"><a href="#2-提交" class="headerlink" title="2.提交"></a>2.提交</h3><p>Commit Message格式   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;</div><div class="line">&lt;space&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;space&gt;</div><div class="line">&lt;footer&gt;</div></pre></td></tr></table></figure>
 <p>上面是一次提交后Message格式规范，分成标题、内容详情、结尾三个部分，各有各的用处。<br>头部即首行，是可以直接在页面中预览的部分，一共有三个部分<type>, <scope>, <subject>, 含义分别如下：</subject></scope></type></p>
 <p><em>Type</em>   </p>
@@ -330,8 +330,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;里的内容是对上面subject里内容的展开，在此作更加详尽的描述，内容里应该包括修改动机和修改前后的对比。</div></pre></td></tr></table></figure>
 <p><em>Footer</em>   </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;footer&gt;里主要放置不兼容变更和Issue关闭的信息。</div></pre></td></tr></table></figure>
-<p>####Revert   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">此外如果需要撤销之前的提交，那么本次提交Message中必须以revert: 开头，后面紧跟前面描述的Header部分，格式不变。</div></pre></td></tr></table></figure>
+<h4 id="Revert"><a href="#Revert" class="headerlink" title="Revert"></a>Revert</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">此外如果需要撤销之前的提交，那么本次提交Message中必须以revert: 开头，后面紧跟前面描述的Header部分，格式不变。</div></pre></td></tr></table></figure>
 <p>在具体开发工作中主要需要遵守的原则就是[使每次提交都有质量]，只要坚持做到以下几点：</p>
 <ol>
 <li>提交时的粒度是一个小功能点或者一个bug fix，这样进行恢复等操作时能够将[误伤]减到最低；</li>
@@ -339,9 +338,9 @@
 <li>不要没提交一次就推送一次，多积攒几个提交后一次性推送，这样可以避免在进行一次提交后发现代码中还有小错误。</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">加入代码已经提交了，对这次提交的内容进行检查时发现里面有个变量单次拼错了或者其他失误，只要还没有推送到远程，</div><div class="line">就有一个不被他人发觉你的疏忽的补救方法——   </div><div class="line">首先，把失误修正之后提交，可以用与上次提交相同的Message。   </div><div class="line">然后，终端中执行&lt;code&gt;git rebase -i [SHA]&lt;/code&gt;，其中SHA是上一次提交之前的那次提交的。   </div><div class="line">最后，这样就将两次提交的节点合并成一个，甚至能够修改提交信息。</div></pre></td></tr></table></figure>
-<p>###3.推送<br>当自己一个人进行开发时，在功能完成之前不要急着创建远程分支。   </p>
-<p>###4.拉取和合并<br>在将其他分支的代码合并到当前分支时，如果那个分支是当前分支的父分支，为了保持图表的可读性和可追踪性，<br>可以考虑用 git rebase 来代替 git merge；反过来或者不是父子关系的两个分支以及互相已经 git merge 过的分支，<br>就不要采用 git rebase 了，避免出现重复的冲突和提交节点。   </p>
-<p>###最后献上一句话<br>日拱一卒，功不唐捐。</p>
+<h3 id="3-推送"><a href="#3-推送" class="headerlink" title="3.推送"></a>3.推送</h3><p>当自己一个人进行开发时，在功能完成之前不要急着创建远程分支。   </p>
+<h3 id="4-拉取和合并"><a href="#4-拉取和合并" class="headerlink" title="4.拉取和合并"></a>4.拉取和合并</h3><p>在将其他分支的代码合并到当前分支时，如果那个分支是当前分支的父分支，为了保持图表的可读性和可追踪性，<br>可以考虑用 git rebase 来代替 git merge；反过来或者不是父子关系的两个分支以及互相已经 git merge 过的分支，<br>就不要采用 git rebase 了，避免出现重复的冲突和提交节点。   </p>
+<h3 id="最后献上一句话"><a href="#最后献上一句话" class="headerlink" title="最后献上一句话"></a>最后献上一句话</h3><p>日拱一卒，功不唐捐。</p>
 
       
     </div>
@@ -433,8 +432,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://o7bp9e1ec.bkt.clouddn.com/1485173143816"
@@ -447,7 +455,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -458,7 +466,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -483,6 +491,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-习惯养成"><span class="nav-number">1.</span> <span class="nav-text">1.习惯养成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-提交"><span class="nav-number">2.</span> <span class="nav-text">2.提交</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Revert"><span class="nav-number">2.1.</span> <span class="nav-text">Revert</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-推送"><span class="nav-number">3.</span> <span class="nav-text">3.推送</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-拉取和合并"><span class="nav-number">4.</span> <span class="nav-text">4.拉取和合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后献上一句话"><span class="nav-number">5.</span> <span class="nav-text">最后献上一句话</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>

@@ -84,31 +84,28 @@
 
 
 
-<meta name="description" content="##JavaScript中的apply(), call()和arguments对象   
-
+<meta name="description" content="JavaScript中的apply(), call()和arguments对象
 学习JavaScript，应该掌握函数式编程的特点和方法，为了做到这一点，详细理解函数调用和函数原型是非常有必要的。打开浏览器，按F12打开浏览器控制台，选择console，让我们在console控制台里编写一些javascript代码来深入了解关于函数的一些知识。
 
-###函数原型输入：
-1Object.">
+函数原型输入：
+1Object.getOwnPro">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript学习笔记(1)">
 <meta property="og:url" content="http://yoursite.com/2016/03/19/JavaScript学习笔记-1/index.html">
 <meta property="og:site_name" content="Ji Xiang's blog">
-<meta property="og:description" content="##JavaScript中的apply(), call()和arguments对象   
-
+<meta property="og:description" content="JavaScript中的apply(), call()和arguments对象
 学习JavaScript，应该掌握函数式编程的特点和方法，为了做到这一点，详细理解函数调用和函数原型是非常有必要的。打开浏览器，按F12打开浏览器控制台，选择console，让我们在console控制台里编写一些javascript代码来深入了解关于函数的一些知识。
 
-###函数原型输入：
-1Object.">
-<meta property="og:updated_time" content="2017-03-04T03:53:44.000Z">
+函数原型输入：
+1Object.getOwnPro">
+<meta property="og:updated_time" content="2017-03-07T06:06:54.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript学习笔记(1)">
-<meta name="twitter:description" content="##JavaScript中的apply(), call()和arguments对象   
-
+<meta name="twitter:description" content="JavaScript中的apply(), call()和arguments对象
 学习JavaScript，应该掌握函数式编程的特点和方法，为了做到这一点，详细理解函数调用和函数原型是非常有必要的。打开浏览器，按F12打开浏览器控制台，选择console，让我们在console控制台里编写一些javascript代码来深入了解关于函数的一些知识。
 
-###函数原型输入：
-1Object.">
+函数原型输入：
+1Object.getOwnPro">
 
 
 
@@ -330,11 +327,10 @@
       
 
       
-        <p>##JavaScript中的apply(), call()和arguments对象   </p>
-<blockquote>
+        <h2 id="JavaScript中的apply-call-和arguments对象"><a href="#JavaScript中的apply-call-和arguments对象" class="headerlink" title="JavaScript中的apply(), call()和arguments对象"></a>JavaScript中的apply(), call()和arguments对象</h2><blockquote>
 <p>学习JavaScript，应该掌握函数式编程的特点和方法，为了做到这一点，详细理解函数调用和函数原型是非常有必要的。<br>打开浏览器，按F12打开浏览器控制台，选择console，让我们在console控制台里编写一些javascript代码来深入了解关于函数的一些知识。</p>
 </blockquote>
-<p>###函数原型<br>输入：</p>
+<h3 id="函数原型"><a href="#函数原型" class="headerlink" title="函数原型"></a>函数原型</h3><p>输入：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.getOwnPropertyNames(<span class="built_in">Function</span>.prototype);</div></pre></td></tr></table></figure>
 <p>得到：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[<span class="string">"length"</span>, <span class="string">"name"</span>, <span class="string">"arguments"</span>, <span class="string">"caller"</span>, <span class="string">"apply"</span>, <span class="string">"bind"</span>, <span class="string">"call"</span>, <span class="string">"toString"</span>, <span class="string">"constructor"</span>]</div></pre></td></tr></table></figure></p>
 <p>这里的输出依赖于你使用的浏览器和JavaScript版本。以上属性里，我们将讨论以下这几个：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Function</span>.prototype.length</div><div class="line"><span class="built_in">Function</span>.prototype.call</div><div class="line"><span class="built_in">Function</span>.prototype.apply</div></pre></td></tr></table></figure></p>
@@ -347,10 +343,10 @@
 <blockquote>
 <p>我们注意到，如果我们不输入第2、3个参数，浏览器将显示undefined。此外，我们注意到这个函数默认的上下文是全局对象Window。</p>
 </blockquote>
-<p>###使用Function.prototype.call<br>调用call函数时，需要把上下文变量this作为第一个输入的参数，然后传进其他参数。<br><em>syntax:</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>.<span class="title">call</span>(<span class="params">this, arg1, arg2, ..., argn</span>);</span></div></pre></td></tr></table></figure></p>
+<h3 id="使用Function-prototype-call"><a href="#使用Function-prototype-call" class="headerlink" title="使用Function.prototype.call"></a>使用Function.prototype.call</h3><p>调用call函数时，需要把上下文变量this作为第一个输入的参数，然后传进其他参数。<br><em>syntax:</em><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>.<span class="title">call</span>(<span class="params">this, arg1, arg2, ..., argn</span>);</span></div></pre></td></tr></table></figure></p>
 <p>因此，下面这两行是等效的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">test(<span class="string">'this'</span>, <span class="string">'is'</span>, <span class="string">'cool'</span>);   </div><div class="line">test.call(Window, <span class="string">'this'</span>, <span class="string">'is'</span>, <span class="string">'cool'</span>);</div></pre></td></tr></table></figure>
-<p>###使用Function.prototype.apply<br>函数apply比call更实用一些，和call类似，apply的调用方式也是把变量this设置为输入参数序列中的第一个参数的值，但输入参数序列的第二个参数也是最后一个，以数组（或者数组对象）的方式传入。<br><em>Syntax:</em></p>
+<h3 id="使用Function-prototype-apply"><a href="#使用Function-prototype-apply" class="headerlink" title="使用Function.prototype.apply"></a>使用Function.prototype.apply</h3><p>函数apply比call更实用一些，和call类似，apply的调用方式也是把变量this设置为输入参数序列中的第一个参数的值，但输入参数序列的第二个参数也是最后一个，以数组（或者数组对象）的方式传入。<br><em>Syntax:</em></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>.<span class="title">apply</span>(<span class="params">this, [arg1, arg2, ..., argn]</span>);</span></div></pre></td></tr></table></figure>
 <p>因此，下面三行全部等效:   </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">tester(<span class="string">"this"</span>, <span class="string">"is"</span>, <span class="string">"cool"</span>);   </div><div class="line">tester.call(<span class="built_in">window</span>, <span class="string">"this"</span>, <span class="string">"is"</span>, <span class="string">"cool"</span>);   </div><div class="line">tester.apply(<span class="built_in">window</span>, [<span class="string">"this"</span>, <span class="string">"is"</span>, <span class="string">"cool"</span>]);</div></pre></td></tr></table></figure>
@@ -358,7 +354,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.max(<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>); <span class="comment">//=&gt; 3   </span></div><div class="line"><span class="built_in">Math</span>.max(<span class="number">2</span>,<span class="number">1</span>); <span class="comment">//=&gt; 2</span></div></pre></td></tr></table></figure>
 <p>这样，如果我有一个数值数组，并且我需要利用Math.max函数找出其中最大的那个，我怎么用一行代码来做这个事儿呢？   </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> numbers = [<span class="number">3</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">3</span>, <span class="number">1</span>];   </div><div class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, numbers);   </div><div class="line"><span class="comment">//=&gt; 8</span></div></pre></td></tr></table></figure>
-<p>###apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。<br>每个函数表达式在它的作用域中都有一个特殊的、可使用的局部变量：arguments。为了研究它的属性，让我们创建另一个test函数:</p>
+<h3 id="apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。"><a href="#apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。" class="headerlink" title="apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。"></a>apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。</h3><p>每个函数表达式在它的作用域中都有一个特殊的、可使用的局部变量：arguments。为了研究它的属性，让我们创建另一个test函数:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> tester = <span class="function"><span class="keyword">function</span>(<span class="params">a, b, c</span>) </span>&#123;   </div><div class="line">	<span class="built_in">console</span>.log(<span class="built_in">Object</span>.getOwnPropertyNames(<span class="built_in">arguments</span>));   </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>注：在这种情况下我们必须像上面这样使用Object.getOwnPropertyNames，因为arguments有一些属性没有标记为可以被枚举的，于是如果仅仅使用console.log(arguments)这种方式它们将不会被显示出来。   </p>
@@ -463,8 +459,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://o7bp9e1ec.bkt.clouddn.com/1485173143816"
@@ -477,7 +482,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -488,7 +493,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -513,6 +518,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript中的apply-call-和arguments对象"><span class="nav-number">1.</span> <span class="nav-text">JavaScript中的apply(), call()和arguments对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数原型"><span class="nav-number">1.1.</span> <span class="nav-text">函数原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Function-prototype-call"><span class="nav-number">1.2.</span> <span class="nav-text">使用Function.prototype.call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Function-prototype-apply"><span class="nav-number">1.3.</span> <span class="nav-text">使用Function.prototype.apply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。"><span class="nav-number">1.4.</span> <span class="nav-text">apply方法真正开始显示出它的重要是当配上特殊参数：Arguments对象。</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>

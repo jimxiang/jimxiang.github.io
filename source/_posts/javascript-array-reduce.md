@@ -37,13 +37,13 @@ map()方法会返回一个由提供的回调函数作用于数组中的每个元
 var new_array = arr.map(callback[, thisArg]);
 ```
 **参数**
-callback|产生新数组的函数，接受三个参数
--|-
-currentValue|数组中当前被处理的元素
-index|当前元素的索引
-array|forEach()方法应用的数组
-thisArg|(可选)执行回调时使用this（即引用对象）的值
-返回值|回调函数产生的新数组
+|callback|产生新数组的函数，接受三个参数|
+|---|---|
+|currentValue|数组中当前被处理的元素|
+|index|当前元素的索引|
+|array|forEach()方法应用的数组|
+|thisArg|(可选)执行回调时使用this（即引用对象）的值|
+|返回值|回调函数产生的新数组|
 
 **Examples**
 ```javascript
@@ -140,5 +140,5 @@ initialValue|(可选)callback第一次调用时使用的第一个值，即初始
 reduce()执行一个接受四个参数的回调函数。回调函数第一次调用时，如果有initialValue，accumulator的值为initialValue，currentValue的值为数组第一个元素的值。如果没有设置initialValue，accumulator的值为数组第一个元素的值，currentValue的值为数组第二个元素的值。   
 **Note** 如果没有提供initialValue，reduce将会从索引1开始执行callback，略过第一个索引。如果提供了，从索引0开始。   
 
-如果数组是空的，并且没有提供initialValue，将会抛出**TyoeError**。如果数组只有一个元素并且没有提供initialValue，或者数组是空的但提供了initialValue，reduce将会返回这一个孤独的值而不是调用callback。   
+如果数组是空的，并且没有提供initialValue，将会抛出**TyoeError**。如果数组只有一个元素并且没有提供initialValue，或者数组是空的但提供了initialValue，reduce将会返回这一个孤独的值而不调用callback。   
 

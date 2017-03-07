@@ -15,13 +15,13 @@ arr.forEach(function callback(currentValue, index, array) {
 }[, thisArg]);
 ```
 **参数**   
-callback|为每个元素执行的函数，接受三个参数
--|-
-currentValue|数组中当前被处理的元素
-index|当前元素的索引
-array|forEach()方法应用的数组
-thisArg|(可选)执行回调时使用this（即引用对象）的值
-返回值|undefined
+| callback | 为每个元素执行的函数，接受三个参数 |
+| --- | --- |
+| currentValue | 数组中当前被处理的元素 |
+| index | 当前元素的索引 |
+| array | forEach()方法应用的数组 |
+| thisArg | (可选)执行回调时使用this（即引用对象）的值 |
+| 返回值 | undefined |
 
 **注意点**   
 forEach()将要处理的元素在callback函数第一次执行前就已经确定，所以在forEach()开始执行后添加到数组中的元素将不会被callback处理。   
@@ -37,13 +37,13 @@ map()方法会返回一个由提供的回调函数作用于数组中的每个元
 var new_array = arr.map(callback[, thisArg]);
 ```
 **参数**
-|callback|产生新数组的函数，接受三个参数|
-|---|---|
-|currentValue|数组中当前被处理的元素|
-|index|当前元素的索引|
-|array|forEach()方法应用的数组|
-|thisArg|(可选)执行回调时使用this（即引用对象）的值|
-|返回值|回调函数产生的新数组|
+| callback | 产生新数组的函数，接受三个参数 |
+| --- | --- |
+| currentValue | 数组中当前被处理的元素 |
+| index | 当前元素的索引 |
+| array | forEach()方法应用的数组 |
+| thisArg | (可选)执行回调时使用this（即引用对象）的值 |
+| 返回值 | 回调函数产生的新数组 |
 
 **Examples**
 ```javascript
@@ -73,13 +73,13 @@ filter()方法返回一个由提供的回调函数将数组中的每个元素过
 var newArray = arr.filter(callback[, thisArg]);
 ```
 **参数**   
-callback|用来检测数组中的每个元素，返回true保留元素，false不保留，接受三个参数
--|-
-element|数组中当前被处理的元素
-index|当前元素的索引
-array|被过滤的数组
-thisArg|(可选)执行回调时使用this（即引用对象）的值
-返回值|满足回调函数的新数组
+| callback | 用来检测数组中的每个元素，返回true保留元素，false不保留，接受三个参数 |
+| --- | --- |
+| element | 数组中当前被处理的元素 |
+| index | 当前元素的索引 |
+| array | 被过滤的数组 |
+| thisArg | (可选)执行回调时使用this（即引用对象）的值 |
+| 返回值 | 满足回调函数的新数组 |
 
 **Examples**
 ```javascript
@@ -128,14 +128,14 @@ function filterItems(query) {
 arr.reduce(callback, [initialValue]);
 ```
 **参数**   
-callback|作用于数组中每个元素的方法，接受四个参数
--|-
-accumulator|在回调函数最后一次调用中返回的值，如果给了initialValue就是initialValue的值
-currentValue|数组中当前被处理的元素
-currentIndex|当前元素的索引，如果给了initialValue，索引从0开始，否则从1开始
-array|reduce的数组
-initialValue|(可选)callback第一次调用时使用的第一个值，即初始值
-返回值|返回最终的结果
+| callback | 作用于数组中每个元素的方法，接受四个参数 |
+| --- | --- |
+| accumulator | 在回调函数最后一次调用中返回的值，如果给了initialValue就是initialValue的值 |
+| currentValue | 数组中当前被处理的元素 |
+| currentIndex | 当前元素的索引，如果给了initialValue，索引从0开始，否则从1开始 |
+| array | reduce的数组 |
+| initialValue | (可选)callback第一次调用时使用的第一个值，即初始值 |
+| 返回值 | 返回最终的结果 |
 **描述**
 reduce()执行一个接受四个参数的回调函数。回调函数第一次调用时，如果有initialValue，accumulator的值为initialValue，currentValue的值为数组第一个元素的值。如果没有设置initialValue，accumulator的值为数组第一个元素的值，currentValue的值为数组第二个元素的值。   
 **Note** 如果没有提供initialValue，reduce将会从索引1开始执行callback，略过第一个索引。如果提供了，从索引0开始。   

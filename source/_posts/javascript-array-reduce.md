@@ -15,6 +15,7 @@ arr.forEach(function callback(currentValue, index, array) {
 }[, thisArg]);
 ```
 **参数**   
+
 | callback | 为每个元素执行的函数，接受三个参数 |
 | --- | --- |
 | currentValue | 数组中当前被处理的元素 |
@@ -36,7 +37,8 @@ map()方法会返回一个由提供的回调函数作用于数组中的每个元
 ```javascript
 var new_array = arr.map(callback[, thisArg]);
 ```
-**参数**
+**参数**   
+
 | callback | 产生新数组的函数，接受三个参数 |
 | --- | --- |
 | currentValue | 数组中当前被处理的元素 |
@@ -73,6 +75,7 @@ filter()方法返回一个由提供的回调函数将数组中的每个元素过
 var newArray = arr.filter(callback[, thisArg]);
 ```
 **参数**   
+
 | callback | 用来检测数组中的每个元素，返回true保留元素，false不保留，接受三个参数 |
 | --- | --- |
 | element | 数组中当前被处理的元素 |
@@ -128,6 +131,7 @@ function filterItems(query) {
 arr.reduce(callback, [initialValue]);
 ```
 **参数**   
+
 | callback | 作用于数组中每个元素的方法，接受四个参数 |
 | --- | --- |
 | accumulator | 在回调函数最后一次调用中返回的值，如果给了initialValue就是initialValue的值 |
